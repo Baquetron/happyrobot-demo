@@ -123,7 +123,7 @@ Auth: `X-API-Key: <key>` header on every endpoint below except `/health`.
 | GET    | `/health`                  | Liveness probe (no auth)                                                                      |
 | GET    | `/loads/search`            | Filter loads. Params: `origin`, `destination`, `equipment_type`, `pickup_date` (YYYY-MM-DD, matches that calendar day in UTC), `pickup_after`, `pickup_before`, `min_rate`, `max_rate`, `include_booked` (default false), `limit` (default 10). |
 | GET    | `/loads/{load_id}`         | Single load lookup                                                                            |
-| POST   | `/loads/{load_id}/book`    | Atomically marks load as booked AND creates a `Call` row. Returns 409 if already booked.      |
+| POST   | `/loads/{load_id}/book`    | Marks the load as booked. Touches the loads table only — agent must follow with `POST /calls` to record the conversation. Returns 409 if already booked. |
 | GET    | `/carriers/verify?mc={mc}` | Verifies carrier eligibility via FMCSA. Strips `MC-` prefix automatically.                    |
 | POST   | `/calls`                   | Logs a call outcome that did NOT result in a booking (failed verification, no load, rejection). |
 | GET    | `/calls`                   | List recent calls (paginated via `limit`, default 50)                                         |
@@ -142,14 +142,11 @@ Carrier is eligible iff **all three**:
 {
   "mc_number": "244265",
   "company_name": "SWIFT TRANSPORTATION",
-  "final_rate": 2300,
-  "negotiation_rounds": 2,
-  "sentiment": "positive",
-  "duration_seconds": 142.5,
-  "notes": "Carrier accepted at +5%",
-  "carrier_name": "Optional override; defaults to company_name"
+  "final_rate": 2300
 }
 ```
+
+After a successful booking the agent must also `POST /calls` with `outcome: "booked"` and the conversation metadata (sentiment, duration, negotiation_rounds, notes). One call per call, regardless of outcome.
 
 ---
 

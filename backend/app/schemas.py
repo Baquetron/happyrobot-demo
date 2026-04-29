@@ -33,14 +33,15 @@ class LoadOut(BaseModel):
 
 
 class BookRequest(BaseModel):
+    """Body for POST /loads/{id}/book — touches the loads table only.
+
+    Call data (sentiment, duration, negotiation_rounds, notes) is captured
+    via POST /calls afterwards.
+    """
+
     mc_number: str
     company_name: str
     final_rate: int
-    negotiation_rounds: int = 0
-    sentiment: Literal["positive", "neutral", "negative"] = "neutral"
-    duration_seconds: float | None = None
-    notes: str | None = None
-    carrier_name: str | None = None
 
 
 class CarrierVerification(BaseModel):

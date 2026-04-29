@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from ..auth import require_api_key
 from ..database import get_db
-from ..models import Call, Load
+from ..models import Load
 from ..schemas import BookRequest, LoadOut
 
 router = APIRouter(prefix="/loads", tags=["loads"], dependencies=[Depends(require_api_key)])
@@ -84,6 +84,8 @@ def get_load(load_id: str, db: Session = Depends(get_db)):
 
 @router.post("/{load_id}/book", response_model=LoadOut)
 def book_load(load_id: str, body: BookRequest, db: Session = Depends(get_db)):
+    """Mark a load as booked. Touches the loads table only — the agent should
+    follow up with POST /calls (outcome=booked) to record the conversation."""
     load = db.get(Load, load_id)
     if not load:
         raise HTTPException(404, "Load not found")
@@ -96,19 +98,6 @@ def book_load(load_id: str, body: BookRequest, db: Session = Depends(get_db)):
     load.agreement_date = datetime.utcnow()
     load.agreed_rate = body.final_rate
 
-    call = Call(
-        carrier_name=body.carrier_name or body.company_name,
-        mc_number=body.mc_number,
-        load_id=load_id,
-        initial_rate=load.loadboard_rate,
-        final_rate=body.final_rate,
-        negotiation_rounds=body.negotiation_rounds,
-        outcome="booked",
-        sentiment=body.sentiment,
-        duration_seconds=body.duration_seconds,
-        notes=body.notes,
-    )
-    db.add(call)
     db.commit()
     db.refresh(load)
     return load
