@@ -1,6 +1,8 @@
 from datetime import date, datetime, time, timezone
+from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BeforeValidator
 from sqlalchemy.orm import Session
 
 from ..auth import require_api_key
@@ -11,21 +13,34 @@ from ..schemas import BookRequest, LoadOut
 router = APIRouter(prefix="/loads", tags=["loads"], dependencies=[Depends(require_api_key)])
 
 
+def _empty_to_none(v):
+    """Treat empty strings as 'not provided'.
+
+    HappyRobot's webhook node sends every configured param even when unset,
+    serializing them as "". Without this coercion, Pydantic rejects "" as an
+    invalid date/int/bool. Run before parsing.
+    """
+    return None if v == "" else v
+
+
+EmptyAsNone = BeforeValidator(_empty_to_none)
+
+
 @router.get("/search", response_model=list[LoadOut])
 def search_loads(
-    origin: str | None = None,
-    destination: str | None = None,
-    equipment_type: str | None = None,
-    pickup_date: date | None = Query(
+    origin: Annotated[str | None, EmptyAsNone] = None,
+    destination: Annotated[str | None, EmptyAsNone] = None,
+    equipment_type: Annotated[str | None, EmptyAsNone] = None,
+    pickup_date: Annotated[date | None, EmptyAsNone] = Query(
         default=None,
         description="Match loads with pickup_datetime on this calendar day (YYYY-MM-DD).",
     ),
-    pickup_after: datetime | None = None,
-    pickup_before: datetime | None = None,
-    min_rate: float | None = None,
-    max_rate: float | None = None,
-    include_booked: bool = False,
-    limit: int = Query(10, ge=1, le=100),
+    pickup_after: Annotated[datetime | None, EmptyAsNone] = None,
+    pickup_before: Annotated[datetime | None, EmptyAsNone] = None,
+    min_rate: Annotated[float | None, EmptyAsNone] = None,
+    max_rate: Annotated[float | None, EmptyAsNone] = None,
+    include_booked: Annotated[bool | None, EmptyAsNone] = False,
+    limit: Annotated[int | None, EmptyAsNone] = Query(10, ge=1, le=100),
     db: Session = Depends(get_db),
 ):
     q = db.query(Load)
@@ -49,7 +64,7 @@ def search_loads(
         q = q.filter(Load.loadboard_rate >= min_rate)
     if max_rate is not None:
         q = q.filter(Load.loadboard_rate <= max_rate)
-    return q.order_by(Load.pickup_datetime).limit(limit).all()
+    return q.order_by(Load.pickup_datetime).limit(limit or 10).all()
 
 
 @router.get("/{load_id}", response_model=LoadOut)
