@@ -121,7 +121,7 @@ Auth: `X-API-Key: <key>` header on every endpoint below except `/health`.
 | Method | Path                       | Purpose                                                                                       |
 | ------ | -------------------------- | --------------------------------------------------------------------------------------------- |
 | GET    | `/health`                  | Liveness probe (no auth)                                                                      |
-| GET    | `/loads/search`            | Filter loads. Params: `origin`, `destination`, `equipment_type`, `pickup_after`, `pickup_before`, `min_rate`, `max_rate`, `include_booked` (default false), `limit` (default 10). |
+| GET    | `/loads/search`            | Filter loads. Params: `origin`, `destination`, `equipment_type`, `pickup_date` (YYYY-MM-DD, matches that calendar day in UTC), `pickup_after`, `pickup_before`, `min_rate`, `max_rate`, `include_booked` (default false), `limit` (default 10). |
 | GET    | `/loads/{load_id}`         | Single load lookup                                                                            |
 | POST   | `/loads/{load_id}/book`    | Atomically marks load as booked AND creates a `Call` row. Returns 409 if already booked.      |
 | GET    | `/carriers/verify?mc={mc}` | Verifies carrier eligibility via FMCSA. Strips `MC-` prefix automatically.                    |

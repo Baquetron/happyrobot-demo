@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime, time, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
@@ -16,6 +16,10 @@ def search_loads(
     origin: str | None = None,
     destination: str | None = None,
     equipment_type: str | None = None,
+    pickup_date: date | None = Query(
+        default=None,
+        description="Match loads with pickup_datetime on this calendar day (YYYY-MM-DD).",
+    ),
     pickup_after: datetime | None = None,
     pickup_before: datetime | None = None,
     min_rate: float | None = None,
@@ -33,6 +37,10 @@ def search_loads(
         q = q.filter(Load.destination.ilike(f"%{destination}%"))
     if equipment_type:
         q = q.filter(Load.equipment_type.ilike(equipment_type))
+    if pickup_date is not None:
+        day_start = datetime.combine(pickup_date, time.min, tzinfo=timezone.utc)
+        day_end = datetime.combine(pickup_date, time.max, tzinfo=timezone.utc)
+        q = q.filter(Load.pickup_datetime >= day_start, Load.pickup_datetime <= day_end)
     if pickup_after:
         q = q.filter(Load.pickup_datetime >= pickup_after)
     if pickup_before:
