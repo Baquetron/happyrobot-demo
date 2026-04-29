@@ -31,7 +31,10 @@ def search_loads(
     origin: Annotated[str | None, EmptyAsNone] = None,
     destination: Annotated[str | None, EmptyAsNone] = None,
     equipment_type: Annotated[str | None, EmptyAsNone] = None,
-    pickup_date: Annotated[date | None, EmptyAsNone] = Query(
+    pickup_date: Annotated[
+        str | None,
+        EmptyAsNone,
+    ] = Query(
         default=None,
         description="Match loads with pickup_datetime on this calendar day (YYYY-MM-DD).",
     ),
@@ -53,8 +56,12 @@ def search_loads(
     if equipment_type:
         q = q.filter(Load.equipment_type.ilike(equipment_type))
     if pickup_date is not None:
-        day_start = datetime.combine(pickup_date, time.min, tzinfo=timezone.utc)
-        day_end = datetime.combine(pickup_date, time.max, tzinfo=timezone.utc)
+        try:
+            d = date.fromisoformat(pickup_date)
+        except ValueError:
+            raise HTTPException(400, "pickup_date must be YYYY-MM-DD")
+        day_start = datetime.combine(d, time.min, tzinfo=timezone.utc)
+        day_end = datetime.combine(d, time.max, tzinfo=timezone.utc)
         q = q.filter(Load.pickup_datetime >= day_start, Load.pickup_datetime <= day_end)
     if pickup_after:
         q = q.filter(Load.pickup_datetime >= pickup_after)
