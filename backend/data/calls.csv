@@ -1,0 +1,81 @@
+created_at,carrier_name,mc_number,load_id,initial_rate,final_rate,negotiation_rounds,outcome,sentiment,duration_seconds,notes
+2026-04-26T12:30:00+00:00,Pine Ridge Trucking,672041,L-2153,1190,1190,1,booked,positive,274.7,"Quick deal, agreed in under 90 seconds."
+2026-04-27T09:15:00+00:00,Big Sky Motor Lines,456813,L-2290,1410,1410,1,booked,positive,264.8,"Friendly call, carrier interested in chained next-leg load."
+2026-04-28T00:15:00+00:00,Lonestar Logistics LLC,885214,L-2288,1410,1410,1,booked,positive,227.7,"Repeat carrier, knew the lane well."
+2026-04-29T22:00:00+00:00,Heartland Hauling,339476,L-2265,3030,3030,2,booked,positive,115.2,Smooth call — carrier accepted original rate.
+2026-04-30T16:45:00+00:00,Cascadia Freight Co,541938,L-2132,1320,1320,2,booked,positive,118.7,"Repeat carrier, knew the lane well."
+2026-04-30T20:45:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2285,5250,5250,1,booked,positive,81.9,"Friendly call, carrier interested in chained next-leg load."
+2026-04-30T22:30:00+00:00,Heartland Hauling,339476,L-2259,1250,1250,2,booked,negative,172.4,"Tough negotiation, sentiment soured but deal closed."
+2026-05-01T08:15:00+00:00,Big Sky Motor Lines,456813,L-2253,2450,2450,1,booked,positive,188.0,"Repeat carrier, knew the lane well."
+2026-05-01T10:00:00+00:00,Pine Ridge Trucking,672041,L-2269,3810,3810,1,booked,positive,193.9,Smooth call — carrier accepted original rate.
+2026-05-01T10:30:00+00:00,Heartland Hauling,339476,L-2197,2220,2331,3,booked,positive,158.3,Carrier accepted +5% on round 2 without pushback.
+2026-05-01T16:30:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2295,1980,2079,3,booked,positive,223.5,Smooth call — carrier accepted original rate.
+2026-05-02T01:15:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2271,630,630,2,booked,neutral,121.7,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-02T07:45:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,,,,0,no_load,neutral,134.7,Caller looking for flatbed; none available on requested date.
+2026-05-03T04:30:00+00:00,Pine Ridge Trucking,672041,L-2170,2490,2614,3,booked,positive,138.2,"Quick deal, agreed in under 90 seconds."
+2026-05-03T05:15:00+00:00,SWIFT TRANSPORTATION CO OF ARIZONA LLC,244265,L-2222,1750,1750,2,booked,positive,223.7,"Quick deal, agreed in under 90 seconds."
+2026-05-04T11:30:00+00:00,Heartland Hauling,339476,L-2276,860,860,2,booked,positive,86.4,"Quick deal, agreed in under 90 seconds."
+2026-05-05T10:30:00+00:00,Continental Trans LLC,918275,L-2299,1270,1270,2,booked,neutral,178.3,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-05T11:30:00+00:00,Continental Trans LLC,918275,,,,0,no_load,negative,41.1,No matching equipment for requested origin/date.
+2026-05-05T19:15:00+00:00,Cascadia Freight Co,541938,L-2219,2510,2636,3,booked,negative,244.0,Carrier grumbled but accepted at +10% final.
+2026-05-06T00:00:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2300,6180,6489,3,booked,positive,97.3,"Quick deal, agreed in under 90 seconds."
+2026-05-06T10:30:00+00:00,J.B. HUNT TRANSPORT INC,184320,,,,0,no_load,neutral,58.1,Carrier wanted Reefer on lane with no available loads.
+2026-05-06T11:45:00+00:00,Summit Cargo Solutions,203684,L-2124,1150,1150,1,booked,positive,194.7,"Repeat carrier, knew the lane well."
+2026-05-06T14:45:00+00:00,Pine Ridge Trucking,672041,L-2232,1150,1291,3,rejected,negative,201.5,Carrier insisted on premium for hazmat surcharge; declined.
+2026-05-07T00:00:00+00:00,Continental Trans LLC,918275,L-2266,430,506,2,rejected,negative,287.1,Held firm at original; carrier walked after round 2.
+2026-05-07T08:45:00+00:00,SWIFT TRANSPORTATION CO OF ARIZONA LLC,244265,L-2232,1150,1150,1,booked,neutral,139.3,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-08T05:00:00+00:00,Summit Cargo Solutions,203684,L-2266,430,452,3,booked,positive,178.8,"Friendly call, carrier interested in chained next-leg load."
+2026-05-09T03:15:00+00:00,Summit Cargo Solutions,203684,L-2246,4020,4579,3,rejected,neutral,227.0,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-09T03:45:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2278,2340,2340,2,booked,positive,204.5,Carrier accepted +5% on round 2 without pushback.
+2026-05-09T12:15:00+00:00,Big Sky Motor Lines,456813,L-2246,4020,4221,3,booked,positive,220.0,Carrier accepted +5% on round 2 without pushback.
+2026-05-09T18:00:00+00:00,Unknown carrier (MC-98123),98123,,,,0,failed_verification,positive,110.3,MC inactive per FMCSA; informed carrier and ended call.
+2026-05-10T10:00:00+00:00,Pine Ridge Trucking,672041,L-2224,3180,3180,1,booked,positive,165.0,Carrier accepted +5% on round 2 without pushback.
+2026-05-10T12:00:00+00:00,Pine Ridge Trucking,672041,L-2046,1940,1940,2,booked,neutral,207.5,"Held firm at +5%, carrier reluctantly accepted."
+2026-05-10T12:00:00+00:00,Big Sky Motor Lines,456813,L-2220,3640,3822,3,booked,positive,224.0,"Repeat carrier, knew the lane well."
+2026-05-10T16:00:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,,,,0,no_load,negative,71.8,No loads in requested origin window.
+2026-05-10T23:30:00+00:00,Continental Trans LLC,918275,L-2201,2850,2992,3,booked,positive,192.5,"Friendly call, carrier interested in chained next-leg load."
+2026-05-11T08:45:00+00:00,Gulf Coast Carriers,721594,L-2298,2060,2060,2,booked,positive,98.2,"Repeat carrier, knew the lane well."
+2026-05-11T15:30:00+00:00,Summit Cargo Solutions,203684,L-2267,3270,3434,3,booked,neutral,286.0,"Held firm at +5%, carrier reluctantly accepted."
+2026-05-12T13:15:00+00:00,Unknown carrier (MC-73849),73849,,,,0,failed_verification,positive,83.1,Carrier flagged out of service; ended call politely.
+2026-05-12T18:15:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,L-2294,1350,1350,2,booked,neutral,187.4,"Held firm at +5%, carrier reluctantly accepted."
+2026-05-12T19:30:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,L-2202,720,720,1,booked,positive,183.3,"Quick deal, agreed in under 90 seconds."
+2026-05-12T22:30:00+00:00,Gulf Coast Carriers,721594,L-2277,1920,1920,1,booked,positive,260.9,"Friendly call, carrier interested in chained next-leg load."
+2026-05-13T13:00:00+00:00,Heartland Hauling,339476,L-2074,920,1056,3,rejected,neutral,198.2,"Negotiation reached round 3, carrier rejected final offer."
+2026-05-13T20:15:00+00:00,Cascadia Freight Co,541938,L-2286,1960,2232,3,rejected,negative,264.8,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-15T08:15:00+00:00,Summit Cargo Solutions,203684,L-2286,1960,1960,1,booked,negative,282.7,"Tough negotiation, sentiment soured but deal closed."
+2026-05-15T12:00:00+00:00,Gulf Coast Carriers,721594,L-2255,5180,6114,3,rejected,negative,217.4,"Negotiation reached round 3, carrier rejected final offer."
+2026-05-15T12:45:00+00:00,Big Sky Motor Lines,456813,L-2252,2080,2184,3,booked,positive,222.6,"Repeat carrier, knew the lane well."
+2026-05-15T14:30:00+00:00,Unknown carrier (MC-85019),85019,,,,0,failed_verification,positive,73.8,MC inactive per FMCSA; informed carrier and ended call.
+2026-05-15T15:00:00+00:00,Unknown carrier (MC-73849),73849,,,,0,failed_verification,neutral,75.2,Carrier MC not authorized to operate.
+2026-05-15T15:30:00+00:00,Pine Ridge Trucking,672041,L-2203,2440,2868,3,rejected,neutral,215.0,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-15T17:00:00+00:00,Gulf Coast Carriers,721594,,,,0,no_load,neutral,46.7,Carrier wanted Reefer on lane with no available loads.
+2026-05-16T18:00:00+00:00,Summit Cargo Solutions,203684,L-2255,5180,5180,1,booked,positive,193.3,"Friendly call, carrier interested in chained next-leg load."
+2026-05-17T02:30:00+00:00,Heartland Hauling,339476,L-2203,2440,2440,2,booked,positive,133.8,"Quick deal, agreed in under 90 seconds."
+2026-05-18T01:00:00+00:00,Lonestar Logistics LLC,885214,L-2254,2910,2910,1,booked,positive,101.5,"Friendly call, carrier interested in chained next-leg load."
+2026-05-18T04:45:00+00:00,Summit Cargo Solutions,203684,L-2273,2790,3334,2,rejected,negative,314.3,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-18T09:45:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2167,710,746,3,booked,positive,256.3,"Friendly call, carrier interested in chained next-leg load."
+2026-05-18T16:45:00+00:00,Cascadia Freight Co,541938,L-2273,2790,2930,3,booked,positive,236.3,"Repeat carrier, knew the lane well."
+2026-05-19T07:00:00+00:00,Summit Cargo Solutions,203684,L-2204,760,863,3,rejected,neutral,257.2,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-19T13:00:00+00:00,J.B. HUNT TRANSPORT INC,184320,L-2260,4190,4400,3,booked,negative,282.2,Carrier grumbled but accepted at +10% final.
+2026-05-19T14:00:00+00:00,Continental Trans LLC,918275,L-2244,1250,1250,2,booked,neutral,227.6,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-19T16:45:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,L-2293,560,588,3,booked,neutral,253.4,Booked after extended back-and-forth.
+2026-05-20T07:30:00+00:00,Big Sky Motor Lines,456813,L-2249,4120,4120,2,booked,positive,100.7,"Friendly call, carrier interested in chained next-leg load."
+2026-05-20T17:30:00+00:00,Pine Ridge Trucking,672041,,,,0,no_load,negative,55.2,Caller looking for flatbed; none available on requested date.
+2026-05-21T16:00:00+00:00,Lonestar Logistics LLC,885214,L-2227,1590,1590,1,booked,neutral,216.6,Booked after extended back-and-forth.
+2026-05-21T16:00:00+00:00,Unknown carrier (MC-73849),73849,,,,0,failed_verification,positive,107.3,Carrier MC not authorized to operate.
+2026-05-22T22:45:00+00:00,Continental Trans LLC,918275,L-2242,1210,1210,2,booked,positive,227.6,Carrier accepted +5% on round 2 without pushback.
+2026-05-23T20:15:00+00:00,SCHNEIDER NATIONAL CARRIERS INC,87413,L-2234,2090,2488,3,rejected,negative,311.8,"Negotiation reached round 3, carrier rejected final offer."
+2026-05-24T10:15:00+00:00,Big Sky Motor Lines,456813,L-2218,5450,6399,3,rejected,negative,249.3,Carrier wanted +15% — outside ceiling. Walked.
+2026-05-24T13:15:00+00:00,Big Sky Motor Lines,456813,L-2234,2090,2090,2,booked,positive,221.9,"Repeat carrier, knew the lane well."
+2026-05-24T13:45:00+00:00,Summit Cargo Solutions,203684,L-2264,720,816,2,rejected,negative,134.6,Held firm at original; carrier walked after round 2.
+2026-05-24T16:45:00+00:00,WERNER ENTERPRISES INC,118273,,,,0,no_load,negative,75.7,No matching equipment for requested origin/date.
+2026-05-24T17:45:00+00:00,Summit Cargo Solutions,203684,,,,0,no_load,neutral,75.9,Caller looking for flatbed; none available on requested date.
+2026-05-24T18:30:00+00:00,WERNER ENTERPRISES INC,118273,,,,0,no_load,neutral,130.6,No matching equipment for requested origin/date.
+2026-05-24T19:30:00+00:00,WERNER ENTERPRISES INC,118273,L-2297,3150,3150,1,booked,neutral,158.6,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-24T20:45:00+00:00,Big Sky Motor Lines,456813,L-2264,720,720,2,booked,neutral,228.1,Booked after extended back-and-forth.
+2026-05-25T15:15:00+00:00,Gulf Coast Carriers,721594,L-2218,5450,5450,2,booked,neutral,136.5,Carrier asked clarifying questions on commodity; deal closed.
+2026-05-25T15:15:00+00:00,Unknown carrier (MC-73849),73849,,,,0,failed_verification,neutral,46.1,Carrier MC not authorized to operate.
+2026-05-25T16:15:00+00:00,Unknown carrier (MC-12387),12387,,,,0,failed_verification,positive,79.6,FMCSA returned status code != A; declined.
+2026-05-28T05:45:00+00:00,Continental Trans LLC,918275,L-2296,3990,3990,1,booked,positive,256.9,"Friendly call, carrier interested in chained next-leg load."
+2026-05-31T12:00:00+00:00,Unknown carrier (MC-85019),85019,,,,0,failed_verification,neutral,73.9,MC inactive per FMCSA; informed carrier and ended call.
+2026-05-31T13:15:00+00:00,Pine Ridge Trucking,672041,,,,0,no_load,neutral,64.6,No matching equipment for requested origin/date.

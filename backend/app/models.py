@@ -15,7 +15,7 @@ class Load(Base):
     pickup_datetime: Mapped[datetime] = mapped_column(DateTime)
     delivery_datetime: Mapped[datetime] = mapped_column(DateTime)
     equipment_type: Mapped[str] = mapped_column(String, index=True)
-    loadboard_rate: Mapped[float] = mapped_column(Float)
+    loadboard_rate: Mapped[int] = mapped_column(Integer)
     notes: Mapped[str] = mapped_column(Text, default="")
     weight: Mapped[float] = mapped_column(Float)
     commodity_type: Mapped[str] = mapped_column(String)
@@ -24,7 +24,9 @@ class Load(Base):
     dimensions: Mapped[str] = mapped_column(String, default="")
     status: Mapped[str] = mapped_column(String, default="available", index=True)
     company_name: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    mc_number: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
     agreement_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    agreed_rate: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
 
 class Call(Base):
@@ -35,8 +37,8 @@ class Call(Base):
     carrier_name: Mapped[str | None] = mapped_column(String, nullable=True)
     mc_number: Mapped[str | None] = mapped_column(String, index=True, nullable=True)
     load_id: Mapped[str | None] = mapped_column(ForeignKey("loads.load_id"), nullable=True)
-    initial_rate: Mapped[float | None] = mapped_column(Float, nullable=True)
-    final_rate: Mapped[float | None] = mapped_column(Float, nullable=True)
+    initial_rate: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    final_rate: Mapped[int | None] = mapped_column(Integer, nullable=True)
     negotiation_rounds: Mapped[int] = mapped_column(Integer, default=0)
     outcome: Mapped[str] = mapped_column(String, index=True)  # booked|rejected|no_load|failed_verification
     sentiment: Mapped[str] = mapped_column(String, index=True)  # positive|neutral|negative

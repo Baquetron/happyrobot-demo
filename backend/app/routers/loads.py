@@ -62,7 +62,9 @@ def book_load(load_id: str, body: BookRequest, db: Session = Depends(get_db)):
 
     load.status = "booked"
     load.company_name = body.company_name
+    load.mc_number = body.mc_number
     load.agreement_date = datetime.utcnow()
+    load.agreed_rate = body.final_rate
 
     call = Call(
         carrier_name=body.carrier_name or body.company_name,

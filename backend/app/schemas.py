@@ -15,7 +15,7 @@ class LoadOut(BaseModel):
     pickup_datetime: datetime
     delivery_datetime: datetime
     equipment_type: str
-    loadboard_rate: float
+    loadboard_rate: int
     notes: str = ""
     weight: float
     commodity_type: str
@@ -24,7 +24,9 @@ class LoadOut(BaseModel):
     dimensions: str = ""
     status: str = "available"
     company_name: str | None = None
+    mc_number: str | None = None
     agreement_date: datetime | None = None
+    agreed_rate: int | None = None
 
     class Config:
         from_attributes = True
@@ -33,7 +35,7 @@ class LoadOut(BaseModel):
 class BookRequest(BaseModel):
     mc_number: str
     company_name: str
-    final_rate: float
+    final_rate: int
     negotiation_rounds: int = 0
     sentiment: Literal["positive", "neutral", "negative"] = "neutral"
     duration_seconds: float | None = None
@@ -55,8 +57,8 @@ class CallbackPayload(BaseModel):
     carrier_name: str | None = None
     mc_number: str | None = None
     load_id: str | None = None
-    initial_rate: float | None = None
-    final_rate: float | None = None
+    initial_rate: int | None = None
+    final_rate: int | None = None
     negotiation_rounds: int = 0
     outcome: Outcome
     sentiment: Sentiment = "neutral"
@@ -70,8 +72,8 @@ class CallOut(BaseModel):
     carrier_name: str | None
     mc_number: str | None
     load_id: str | None
-    initial_rate: float | None
-    final_rate: float | None
+    initial_rate: int | None
+    final_rate: int | None
     negotiation_rounds: int
     outcome: str
     sentiment: str

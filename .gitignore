@@ -1,0 +1,33 @@
+# Local handoff / context doc — kept out of VCS to avoid leaking secrets
+HANDOFF.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Docker
+*.pid
+
+# Logs
+*.log
