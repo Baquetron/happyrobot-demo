@@ -55,7 +55,7 @@ def search_loads(
         q = q.filter(Load.destination.ilike(f"%{destination}%"))
     if equipment_type:
         q = q.filter(Load.equipment_type.ilike(equipment_type))
-    if pickup_date is not None:
+    if pickup_date:  # falsy covers both None and ""
         try:
             d = date.fromisoformat(pickup_date)
         except ValueError:
