@@ -22,7 +22,7 @@ export function KpiCard({
           {value}
         </span>
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
-        {children && <div className="mt-auto pt-4">{children}</div>}
+        {children && <div className="mt-auto pt-2 pb-2">{children}</div>}
       </CardContent>
     </Card>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 export interface MiniDonutSegment {
   key: string;
   label: string;
@@ -30,8 +34,10 @@ export function MiniDonut({
   const cy = size / 2;
   const r = (size - thickness) / 2;
   const total = segments.reduce((s, x) => s + x.value, 0) || 1;
+  const [hovered, setHovered] = useState<
+    (MiniDonutSegment & { pct: string }) | null
+  >(null);
 
-  // Walk segments and emit one path per slice. Use 359.99° for full-ring single segments.
   let acc = 0;
   const slices = segments
     .filter((s) => s.value > 0)
@@ -49,7 +55,10 @@ export function MiniDonut({
     });
 
   return (
-    <div className="flex justify-center">
+    <div
+      className="relative flex justify-center"
+      onMouseLeave={() => setHovered(null)}
+    >
       <svg
         width={size}
         height={size}
@@ -72,13 +81,31 @@ export function MiniDonut({
             stroke={s.color}
             strokeWidth={thickness}
             strokeLinecap="butt"
-            className="cursor-pointer transition-opacity hover:opacity-80"
-            style={{ pointerEvents: "stroke" }}
-          >
-            <title>{`${s.label}: ${s.value} (${s.pct}%)`}</title>
-          </path>
+            className="cursor-pointer transition-opacity"
+            style={{
+              pointerEvents: "stroke",
+              opacity: hovered && hovered.key !== s.key ? 0.4 : 1,
+            }}
+            onMouseEnter={() => setHovered(s)}
+          />
         ))}
       </svg>
+      {hovered && (
+        <div
+          role="tooltip"
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 -translate-y-full whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-md z-10"
+        >
+          <span
+            className="inline-block w-1.5 h-1.5 rounded-sm mr-1.5 align-middle"
+            style={{ background: hovered.color }}
+          />
+          <span className="font-medium">{hovered.label}</span>
+          <span className="text-muted-foreground">
+            {" "}
+            · {hovered.value} ({hovered.pct}%)
+          </span>
+        </div>
+      )}
     </div>
   );
 }
