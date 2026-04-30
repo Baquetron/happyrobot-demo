@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { OverviewTab } from "@/components/tabs/OverviewTab";
 import { NegotiationsTab } from "@/components/tabs/NegotiationsTab";
 import { CarriersTab } from "@/components/tabs/CarriersTab";
@@ -41,25 +40,22 @@ export default function Page() {
   return (
     <div className="min-h-screen">
       <header className="bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
-              HR
-            </div>
-            <div>
-              <h1 className="text-base font-semibold text-foreground">
-                Carrier Sales Dashboard
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                HappyRobot inbound voice agent — live metrics
-              </p>
-            </div>
+        <div className="mx-auto max-w-[1600px] px-4 py-5 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
+            HR
           </div>
-          <ThemeToggle />
+          <div>
+            <h1 className="text-base font-semibold text-foreground">
+              Carrier Sales Dashboard
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              HappyRobot inbound voice agent — live metrics
+            </p>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="mx-auto max-w-[1600px] px-4 py-6">
         {error && (
           <div className="bg-card border border-destructive/30 text-destructive rounded-xl p-4 text-sm">
             Failed to load data: {error}
@@ -96,17 +92,17 @@ export default function Page() {
 function DashboardSkeleton() {
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {Array.from({ length: 3 }).map((_, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
             className="h-28 bg-card border border-border rounded-xl animate-pulse"
           />
         ))}
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <div className="h-80 bg-card border border-border rounded-xl animate-pulse lg:col-span-3" />
         <div className="h-80 bg-card border border-border rounded-xl animate-pulse lg:col-span-2" />
-        <div className="h-80 bg-card border border-border rounded-xl animate-pulse" />
       </div>
     </div>
   );
