@@ -60,39 +60,51 @@ export function OverviewTab({
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:auto-rows-min">
-      {/* KPIs (top, span 3 cols on lg) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:col-span-3">
-        <KpiCard
-          label="Booking rate"
-          value={fmtPct(metrics.conversion_rate)}
-          hint={`${metrics.booked_calls} of ${metrics.total_calls} booked`}
-        >
-          <MiniDonut segments={outcomeSegments} />
-        </KpiCard>
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-start">
+      {/* Left column: KPIs row + Call Volume row */}
+      <div className="lg:col-span-3 space-y-4 min-w-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KpiCard
+            label="Booking rate"
+            value={fmtPct(metrics.conversion_rate)}
+            hint={`${metrics.booked_calls} of ${metrics.total_calls} booked`}
+          >
+            <MiniDonut segments={outcomeSegments} />
+          </KpiCard>
 
-        <KpiCard label="Total calls" value={fmtNum(metrics.total_calls)}>
-          <SegBar segments={totalCallsSegments} />
-        </KpiCard>
+          <KpiCard label="Total calls" value={fmtNum(metrics.total_calls)}>
+            <SegBar segments={totalCallsSegments} />
+          </KpiCard>
 
-        <KpiCard
-          label="Avg negotiation rounds"
-          value={fmtNum(metrics.avg_negotiation_rounds, 2)}
-          hint="Bookings closed at each round"
-        >
-          <SegBar segments={roundsSegments} />
-        </KpiCard>
+          <KpiCard
+            label="Avg negotiation rounds"
+            value={fmtNum(metrics.avg_negotiation_rounds, 2)}
+            hint="Bookings closed at each round"
+          >
+            <SegBar segments={roundsSegments} />
+          </KpiCard>
 
-        <KpiCard
-          label="Avg call duration"
-          value={fmtDuration(metrics.avg_call_duration)}
-        >
-          <SegBar segments={durationSegments} />
-        </KpiCard>
+          <KpiCard
+            label="Avg call duration"
+            value={fmtDuration(metrics.avg_call_duration)}
+          >
+            <SegBar segments={durationSegments} />
+          </KpiCard>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Call volume</CardTitle>
+            <CardDescription>Calls per day</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {volume.length ? <VolumeLine data={volume} /> : <EmptyChart />}
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Call Log preview (right column, spans both rows, scrollable) */}
-      <Card className="flex flex-col min-h-0 lg:col-start-4 lg:col-span-2 lg:row-start-1 lg:row-span-2">
+      {/* Right column: Call Log preview, stretches to match left column, scrolls internally */}
+      <Card className="lg:col-span-2 flex flex-col self-stretch min-h-0 overflow-hidden">
         <CardHeader>
           <CardTitle>Call Log</CardTitle>
           <CardDescription>Most recent calls</CardDescription>
@@ -133,17 +145,6 @@ export function OverviewTab({
               </li>
             )}
           </ul>
-        </CardContent>
-      </Card>
-
-      {/* Call Volume (left, spans 3 cols, second row) */}
-      <Card className="lg:col-span-3 lg:row-start-2">
-        <CardHeader>
-          <CardTitle>Call volume</CardTitle>
-          <CardDescription>Calls per day</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {volume.length ? <VolumeLine data={volume} /> : <EmptyChart />}
         </CardContent>
       </Card>
     </div>

@@ -7,8 +7,8 @@ export interface MiniDonutSegment {
 
 export function MiniDonut({
   segments,
-  size = 56,
-  thickness = 8,
+  size = 96,
+  thickness = 12,
 }: {
   segments: MiniDonutSegment[];
   size?: number;
@@ -20,8 +20,15 @@ export function MiniDonut({
   let offset = 0;
 
   return (
-    <div className="flex items-center gap-3">
-      <svg width={size} height={size} className="shrink-0">
+    <div className="flex justify-center">
+      <svg
+        width={size}
+        height={size}
+        role="img"
+        aria-label={segments
+          .map((s) => `${s.label}: ${s.value}`)
+          .join(", ")}
+      >
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -35,6 +42,7 @@ export function MiniDonut({
           const dash = `${len} ${c - len}`;
           const dashOffset = -offset;
           offset += len;
+          const pct = ((s.value / total) * 100).toFixed(0);
           return (
             <circle
               key={s.key}
@@ -48,22 +56,13 @@ export function MiniDonut({
               strokeDashoffset={dashOffset}
               transform={`rotate(-90 ${size / 2} ${size / 2})`}
               strokeLinecap="butt"
-            />
+              className="cursor-pointer transition-opacity hover:opacity-80"
+            >
+              <title>{`${s.label}: ${s.value} (${pct}%)`}</title>
+            </circle>
           );
         })}
       </svg>
-      <ul className="flex-1 min-w-0 space-y-0.5 text-[11px]">
-        {segments.map((s) => (
-          <li key={s.key} className="flex items-center gap-1.5 min-w-0">
-            <span
-              className="w-1.5 h-1.5 rounded-sm shrink-0"
-              style={{ background: s.color }}
-            />
-            <span className="text-muted-foreground truncate flex-1">{s.label}</span>
-            <span className="text-foreground tabular-nums shrink-0">{s.value}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
