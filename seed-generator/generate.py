@@ -35,6 +35,12 @@ from pathlib import Path
 SEED = 42
 random.seed(SEED)
 
+# Anchor for "recent" call dates. All seed calls (and the agreement_date
+# on booked loads) land in the 30 days BEFORE this anchor, so that when
+# the agent makes a real test call its created_at is the most recent and
+# bubbles to the top of the recent-calls feed.
+NOW = datetime.now(timezone.utc).replace(microsecond=0)
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_LOADS = REPO_ROOT / "backend" / "data" / "loads.json"
 OUT_CALLS = REPO_ROOT / "backend" / "data" / "calls.json"
@@ -179,10 +185,11 @@ def random_load_notes(equipment: str) -> str:
     return random.choice(pool)
 
 
-def random_may_dt() -> datetime:
-    return datetime(2026, 5, random.randint(1, 31),
-                    random.randint(7, 19), random.choice([0, 15, 30, 45]),
-                    tzinfo=timezone.utc)
+def random_recent_dt() -> datetime:
+    """Random datetime in the past 30 days, relative to NOW. Used for call
+    timestamps so seed data stays older than any real test call."""
+    days_ago = random.uniform(0.1, 30)
+    return NOW - timedelta(days=days_ago)
 
 
 # --- Load generation ----------------------------------------------------
@@ -278,9 +285,9 @@ def mark_booked(loads: list[dict], n_booked: int = 50) -> list[int]:
     for i in booked:
         load = loads[i]
         carrier = random.choice(CARRIERS)
-        pickup = datetime.fromisoformat(load["pickup_datetime"])
-        agreement = pickup - timedelta(days=random.randint(1, 7),
-                                       hours=random.randint(0, 23))
+        # Agreement happens in the past 30 days; pickup_datetime stays in
+        # May (the load's scheduled pickup). Carriers book ahead — realistic.
+        agreement = random_recent_dt()
         # Negotiation rounds drive the final price per the agent's policy:
         # rounds 1-2 close at the original; round 3 closes at +5%.
         rounds = random.choices([1, 2, 3], weights=[5, 3, 2])[0]
@@ -392,7 +399,7 @@ def gen_pure_failure(loads: list[dict], outcome: str) -> dict:
         load = random.choice(avail)
         name, mc = random.choice(CARRIERS)
         return {
-            "created_at": random_may_dt().isoformat(),
+            "created_at": random_recent_dt().isoformat(),
             "carrier_name": name,
             "mc_number": mc,
             "load_id": load["load_id"],
@@ -407,7 +414,7 @@ def gen_pure_failure(loads: list[dict], outcome: str) -> dict:
     if outcome == "no_load":
         name, mc = random.choice(CARRIERS)
         return {
-            "created_at": random_may_dt().isoformat(),
+            "created_at": random_recent_dt().isoformat(),
             "carrier_name": name,
             "mc_number": mc,
             "load_id": None,
@@ -422,7 +429,7 @@ def gen_pure_failure(loads: list[dict], outcome: str) -> dict:
     if outcome == "failed_verification":
         bad_mc = random.choice(INVALID_MCS)
         return {
-            "created_at": random_may_dt().isoformat(),
+            "created_at": random_recent_dt().isoformat(),
             "carrier_name": f"Unknown carrier (MC-{bad_mc})",
             "mc_number": bad_mc,
             "load_id": None,

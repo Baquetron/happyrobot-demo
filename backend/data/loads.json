@@ -914,9 +914,9 @@
     "miles": 646,
     "dimensions": "360x102x143 in",
     "status": "booked",
-    "company_name": "Pine Ridge Trucking",
-    "mc_number": "672041",
-    "agreement_date": "2026-05-10T12:00:00+00:00",
+    "company_name": "SWIFT TRANSPORTATION CO OF ARIZONA LLC",
+    "mc_number": "244265",
+    "agreement_date": "2026-04-11T06:48:12.491596+00:00",
     "agreed_rate": 1940
   },
   {
@@ -2474,9 +2474,9 @@
     "miles": 576,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Summit Cargo Solutions",
-    "mc_number": "203684",
-    "agreement_date": "2026-05-06T11:45:00+00:00",
+    "company_name": "Pine Ridge Trucking",
+    "mc_number": "672041",
+    "agreement_date": "2026-04-19T15:46:18.577145+00:00",
     "agreed_rate": 1150
   },
   {
@@ -2634,10 +2634,10 @@
     "miles": 665,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "Cascadia Freight Co",
-    "mc_number": "541938",
-    "agreement_date": "2026-04-30T16:45:00+00:00",
-    "agreed_rate": 1320
+    "company_name": "Big Sky Motor Lines",
+    "mc_number": "456813",
+    "agreement_date": "2026-04-17T02:57:03.037735+00:00",
+    "agreed_rate": 1386
   },
   {
     "load_id": "L-2133",
@@ -3056,7 +3056,7 @@
     "status": "booked",
     "company_name": "Pine Ridge Trucking",
     "mc_number": "672041",
-    "agreement_date": "2026-04-26T12:30:00+00:00",
+    "agreement_date": "2026-04-09T02:46:00.699909+00:00",
     "agreed_rate": 1190
   },
   {
@@ -3334,10 +3334,10 @@
     "miles": 307,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-05-18T09:45:00+00:00",
-    "agreed_rate": 746
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-23T21:22:50.391542+00:00",
+    "agreed_rate": 710
   },
   {
     "load_id": "L-2168",
@@ -3394,9 +3394,9 @@
     "miles": 1358,
     "dimensions": "48x40x55 in pallets",
     "status": "booked",
-    "company_name": "Pine Ridge Trucking",
-    "mc_number": "672041",
-    "agreement_date": "2026-05-03T04:30:00+00:00",
+    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
+    "mc_number": "87413",
+    "agreement_date": "2026-04-06T20:19:21.732417+00:00",
     "agreed_rate": 2614
   },
   {
@@ -3934,10 +3934,10 @@
     "miles": 984,
     "dimensions": "48x40x50 in pallets",
     "status": "booked",
-    "company_name": "Heartland Hauling",
-    "mc_number": "339476",
-    "agreement_date": "2026-05-01T10:30:00+00:00",
-    "agreed_rate": 2331
+    "company_name": "WERNER ENTERPRISES INC",
+    "mc_number": "118273",
+    "agreement_date": "2026-04-14T01:28:14.764981+00:00",
+    "agreed_rate": 2220
   },
   {
     "load_id": "L-2198",
@@ -4014,10 +4014,10 @@
     "miles": 1465,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "Continental Trans LLC",
-    "mc_number": "918275",
-    "agreement_date": "2026-05-10T23:30:00+00:00",
-    "agreed_rate": 2992
+    "company_name": "Cascadia Freight Co",
+    "mc_number": "541938",
+    "agreement_date": "2026-04-29T10:47:36.219104+00:00",
+    "agreed_rate": 2850
   },
   {
     "load_id": "L-2202",
@@ -4034,9 +4034,9 @@
     "miles": 362,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
-    "mc_number": "87413",
-    "agreement_date": "2026-05-12T19:30:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-04T05:03:14.731197+00:00",
     "agreed_rate": 720
   },
   {
@@ -4054,9 +4054,9 @@
     "miles": 1224,
     "dimensions": "48x40x60 in pallets",
     "status": "booked",
-    "company_name": "Heartland Hauling",
-    "mc_number": "339476",
-    "agreement_date": "2026-05-17T02:30:00+00:00",
+    "company_name": "J.B. HUNT TRANSPORT INC",
+    "mc_number": "184320",
+    "agreement_date": "2026-04-27T02:49:13.964729+00:00",
     "agreed_rate": 2440
   },
   {
@@ -4354,9 +4354,9 @@
     "miles": 2008,
     "dimensions": "420x96x79 in",
     "status": "booked",
-    "company_name": "Gulf Coast Carriers",
-    "mc_number": "721594",
-    "agreement_date": "2026-05-25T15:15:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-14T19:53:49.398756+00:00",
     "agreed_rate": 5450
   },
   {
@@ -4374,9 +4374,9 @@
     "miles": 1167,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "Cascadia Freight Co",
-    "mc_number": "541938",
-    "agreement_date": "2026-05-05T19:15:00+00:00",
+    "company_name": "J.B. HUNT TRANSPORT INC",
+    "mc_number": "184320",
+    "agreement_date": "2026-04-15T19:08:39.334775+00:00",
     "agreed_rate": 2636
   },
   {
@@ -4394,10 +4394,10 @@
     "miles": 1493,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-10T12:00:00+00:00",
-    "agreed_rate": 3822
+    "company_name": "Pine Ridge Trucking",
+    "mc_number": "672041",
+    "agreement_date": "2026-04-01T12:19:49.086775+00:00",
+    "agreed_rate": 3640
   },
   {
     "load_id": "L-2221",
@@ -4436,7 +4436,7 @@
     "status": "booked",
     "company_name": "SWIFT TRANSPORTATION CO OF ARIZONA LLC",
     "mc_number": "244265",
-    "agreement_date": "2026-05-03T05:15:00+00:00",
+    "agreement_date": "2026-04-30T05:33:55.895443+00:00",
     "agreed_rate": 1750
   },
   {
@@ -4474,10 +4474,10 @@
     "miles": 1748,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Pine Ridge Trucking",
-    "mc_number": "672041",
-    "agreement_date": "2026-05-10T10:00:00+00:00",
-    "agreed_rate": 3180
+    "company_name": "Summit Cargo Solutions",
+    "mc_number": "203684",
+    "agreement_date": "2026-04-27T17:48:16.289752+00:00",
+    "agreed_rate": 3339
   },
   {
     "load_id": "L-2225",
@@ -4536,7 +4536,7 @@
     "status": "booked",
     "company_name": "Lonestar Logistics LLC",
     "mc_number": "885214",
-    "agreement_date": "2026-05-21T16:00:00+00:00",
+    "agreement_date": "2026-04-22T14:58:12.981174+00:00",
     "agreed_rate": 1590
   },
   {
@@ -4634,9 +4634,9 @@
     "miles": 428,
     "dimensions": "240x96x53 in",
     "status": "booked",
-    "company_name": "SWIFT TRANSPORTATION CO OF ARIZONA LLC",
-    "mc_number": "244265",
-    "agreement_date": "2026-05-07T08:45:00+00:00",
+    "company_name": "J.B. HUNT TRANSPORT INC",
+    "mc_number": "184320",
+    "agreement_date": "2026-04-27T03:22:37.214516+00:00",
     "agreed_rate": 1150
   },
   {
@@ -4674,9 +4674,9 @@
     "miles": 852,
     "dimensions": "48x40x50 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-24T13:15:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-08T19:03:39.370853+00:00",
     "agreed_rate": 2090
   },
   {
@@ -4834,9 +4834,9 @@
     "miles": 683,
     "dimensions": "48x40x55 in pallets",
     "status": "booked",
-    "company_name": "Continental Trans LLC",
-    "mc_number": "918275",
-    "agreement_date": "2026-05-22T22:45:00+00:00",
+    "company_name": "Big Sky Motor Lines",
+    "mc_number": "456813",
+    "agreement_date": "2026-04-12T13:58:53.193110+00:00",
     "agreed_rate": 1210
   },
   {
@@ -4874,9 +4874,9 @@
     "miles": 713,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Continental Trans LLC",
-    "mc_number": "918275",
-    "agreement_date": "2026-05-19T14:00:00+00:00",
+    "company_name": "Summit Cargo Solutions",
+    "mc_number": "203684",
+    "agreement_date": "2026-04-10T23:38:45.318612+00:00",
     "agreed_rate": 1250
   },
   {
@@ -4914,10 +4914,10 @@
     "miles": 2072,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-09T12:15:00+00:00",
-    "agreed_rate": 4221
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-21T03:00:33.262731+00:00",
+    "agreed_rate": 4020
   },
   {
     "load_id": "L-2247",
@@ -4974,9 +4974,9 @@
     "miles": 2081,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-20T07:30:00+00:00",
+    "company_name": "WERNER ENTERPRISES INC",
+    "mc_number": "118273",
+    "agreement_date": "2026-04-10T22:46:05.919908+00:00",
     "agreed_rate": 4120
   },
   {
@@ -5036,8 +5036,8 @@
     "status": "booked",
     "company_name": "Big Sky Motor Lines",
     "mc_number": "456813",
-    "agreement_date": "2026-05-15T12:45:00+00:00",
-    "agreed_rate": 2184
+    "agreement_date": "2026-04-10T05:41:29.307539+00:00",
+    "agreed_rate": 2080
   },
   {
     "load_id": "L-2253",
@@ -5054,9 +5054,9 @@
     "miles": 1290,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-01T08:15:00+00:00",
+    "company_name": "Gulf Coast Carriers",
+    "mc_number": "721594",
+    "agreement_date": "2026-04-19T08:12:09.598401+00:00",
     "agreed_rate": 2450
   },
   {
@@ -5076,7 +5076,7 @@
     "status": "booked",
     "company_name": "Lonestar Logistics LLC",
     "mc_number": "885214",
-    "agreement_date": "2026-05-18T01:00:00+00:00",
+    "agreement_date": "2026-04-11T06:07:49.106133+00:00",
     "agreed_rate": 2910
   },
   {
@@ -5094,9 +5094,9 @@
     "miles": 2731,
     "dimensions": "48x40x55 in pallets",
     "status": "booked",
-    "company_name": "Summit Cargo Solutions",
-    "mc_number": "203684",
-    "agreement_date": "2026-05-16T18:00:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-01T16:25:43.599511+00:00",
     "agreed_rate": 5180
   },
   {
@@ -5176,7 +5176,7 @@
     "status": "booked",
     "company_name": "Heartland Hauling",
     "mc_number": "339476",
-    "agreement_date": "2026-04-30T22:30:00+00:00",
+    "agreement_date": "2026-04-22T09:26:20.266680+00:00",
     "agreed_rate": 1250
   },
   {
@@ -5196,7 +5196,7 @@
     "status": "booked",
     "company_name": "J.B. HUNT TRANSPORT INC",
     "mc_number": "184320",
-    "agreement_date": "2026-05-19T13:00:00+00:00",
+    "agreement_date": "2026-04-04T09:13:23.529252+00:00",
     "agreed_rate": 4400
   },
   {
@@ -5274,10 +5274,10 @@
     "miles": 386,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-05-24T20:45:00+00:00",
-    "agreed_rate": 720
+    "company_name": "SWIFT TRANSPORTATION CO OF ARIZONA LLC",
+    "mc_number": "244265",
+    "agreement_date": "2026-04-01T04:07:56.467637+00:00",
+    "agreed_rate": 756
   },
   {
     "load_id": "L-2265",
@@ -5294,9 +5294,9 @@
     "miles": 1361,
     "dimensions": "48x40x60 in pallets",
     "status": "booked",
-    "company_name": "Heartland Hauling",
-    "mc_number": "339476",
-    "agreement_date": "2026-04-29T22:00:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-21T09:55:36.818953+00:00",
     "agreed_rate": 3030
   },
   {
@@ -5316,7 +5316,7 @@
     "status": "booked",
     "company_name": "Summit Cargo Solutions",
     "mc_number": "203684",
-    "agreement_date": "2026-05-08T05:00:00+00:00",
+    "agreement_date": "2026-04-27T01:20:08.854018+00:00",
     "agreed_rate": 452
   },
   {
@@ -5334,10 +5334,10 @@
     "miles": 1749,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "Summit Cargo Solutions",
-    "mc_number": "203684",
-    "agreement_date": "2026-05-11T15:30:00+00:00",
-    "agreed_rate": 3434
+    "company_name": "Cascadia Freight Co",
+    "mc_number": "541938",
+    "agreement_date": "2026-04-07T05:22:41.127928+00:00",
+    "agreed_rate": 3270
   },
   {
     "load_id": "L-2268",
@@ -5376,7 +5376,7 @@
     "status": "booked",
     "company_name": "Pine Ridge Trucking",
     "mc_number": "672041",
-    "agreement_date": "2026-05-01T10:00:00+00:00",
+    "agreement_date": "2026-04-06T13:16:51.692154+00:00",
     "agreed_rate": 3810
   },
   {
@@ -5414,9 +5414,9 @@
     "miles": 361,
     "dimensions": "48x40x50 in pallets",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-05-02T01:15:00+00:00",
+    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
+    "mc_number": "87413",
+    "agreement_date": "2026-04-18T01:57:53.637964+00:00",
     "agreed_rate": 630
   },
   {
@@ -5454,10 +5454,10 @@
     "miles": 1618,
     "dimensions": "48x40x50 in pallets",
     "status": "booked",
-    "company_name": "Cascadia Freight Co",
-    "mc_number": "541938",
-    "agreement_date": "2026-05-18T16:45:00+00:00",
-    "agreed_rate": 2930
+    "company_name": "Summit Cargo Solutions",
+    "mc_number": "203684",
+    "agreement_date": "2026-04-09T13:46:12.175093+00:00",
+    "agreed_rate": 2790
   },
   {
     "load_id": "L-2274",
@@ -5514,9 +5514,9 @@
     "miles": 433,
     "dimensions": "48x40x60 in pallets",
     "status": "booked",
-    "company_name": "Heartland Hauling",
-    "mc_number": "339476",
-    "agreement_date": "2026-05-04T11:30:00+00:00",
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-04T09:56:18.843267+00:00",
     "agreed_rate": 860
   },
   {
@@ -5534,10 +5534,10 @@
     "miles": 981,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "Gulf Coast Carriers",
-    "mc_number": "721594",
-    "agreement_date": "2026-05-12T22:30:00+00:00",
-    "agreed_rate": 1920
+    "company_name": "Heartland Hauling",
+    "mc_number": "339476",
+    "agreement_date": "2026-04-05T01:12:13.142200+00:00",
+    "agreed_rate": 2016
   },
   {
     "load_id": "L-2278",
@@ -5554,9 +5554,9 @@
     "miles": 1053,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-05-09T03:45:00+00:00",
+    "company_name": "Heartland Hauling",
+    "mc_number": "339476",
+    "agreement_date": "2026-04-06T14:29:55.668906+00:00",
     "agreed_rate": 2340
   },
   {
@@ -5694,9 +5694,9 @@
     "miles": 1915,
     "dimensions": "360x96x70 in",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-04-30T20:45:00+00:00",
+    "company_name": "Gulf Coast Carriers",
+    "mc_number": "721594",
+    "agreement_date": "2026-04-03T20:21:46.017472+00:00",
     "agreed_rate": 5250
   },
   {
@@ -5714,9 +5714,9 @@
     "miles": 871,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "Summit Cargo Solutions",
-    "mc_number": "203684",
-    "agreement_date": "2026-05-15T08:15:00+00:00",
+    "company_name": "WERNER ENTERPRISES INC",
+    "mc_number": "118273",
+    "agreement_date": "2026-04-28T03:56:15.192151+00:00",
     "agreed_rate": 1960
   },
   {
@@ -5754,9 +5754,9 @@
     "miles": 720,
     "dimensions": "48x40x70 in pallets",
     "status": "booked",
-    "company_name": "Lonestar Logistics LLC",
-    "mc_number": "885214",
-    "agreement_date": "2026-04-28T00:15:00+00:00",
+    "company_name": "J.B. HUNT TRANSPORT INC",
+    "mc_number": "184320",
+    "agreement_date": "2026-04-16T01:50:54.338932+00:00",
     "agreed_rate": 1410
   },
   {
@@ -5794,9 +5794,9 @@
     "miles": 751,
     "dimensions": "48x40x60 in pallets",
     "status": "booked",
-    "company_name": "Big Sky Motor Lines",
-    "mc_number": "456813",
-    "agreement_date": "2026-04-27T09:15:00+00:00",
+    "company_name": "Heartland Hauling",
+    "mc_number": "339476",
+    "agreement_date": "2026-04-01T23:08:03.876685+00:00",
     "agreed_rate": 1410
   },
   {
@@ -5854,9 +5854,9 @@
     "miles": 236,
     "dimensions": "48x40x55 in pallets",
     "status": "booked",
-    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
-    "mc_number": "87413",
-    "agreement_date": "2026-05-19T16:45:00+00:00",
+    "company_name": "Heartland Hauling",
+    "mc_number": "339476",
+    "agreement_date": "2026-04-21T01:42:02.292521+00:00",
     "agreed_rate": 588
   },
   {
@@ -5874,10 +5874,10 @@
     "miles": 566,
     "dimensions": "300x96x44 in",
     "status": "booked",
-    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
-    "mc_number": "87413",
-    "agreement_date": "2026-05-12T18:15:00+00:00",
-    "agreed_rate": 1350
+    "company_name": "Summit Cargo Solutions",
+    "mc_number": "203684",
+    "agreement_date": "2026-04-13T15:03:13.016648+00:00",
+    "agreed_rate": 1418
   },
   {
     "load_id": "L-2295",
@@ -5894,10 +5894,10 @@
     "miles": 1140,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-05-01T16:30:00+00:00",
-    "agreed_rate": 2079
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-10T07:11:48.080528+00:00",
+    "agreed_rate": 1980
   },
   {
     "load_id": "L-2296",
@@ -5914,9 +5914,9 @@
     "miles": 1825,
     "dimensions": "48x40x48 in pallets",
     "status": "booked",
-    "company_name": "Continental Trans LLC",
-    "mc_number": "918275",
-    "agreement_date": "2026-05-28T05:45:00+00:00",
+    "company_name": "WERNER ENTERPRISES INC",
+    "mc_number": "118273",
+    "agreement_date": "2026-04-05T06:37:27.099224+00:00",
     "agreed_rate": 3990
   },
   {
@@ -5934,9 +5934,9 @@
     "miles": 1375,
     "dimensions": "48x40x65 in pallets",
     "status": "booked",
-    "company_name": "WERNER ENTERPRISES INC",
-    "mc_number": "118273",
-    "agreement_date": "2026-05-24T19:30:00+00:00",
+    "company_name": "SCHNEIDER NATIONAL CARRIERS INC",
+    "mc_number": "87413",
+    "agreement_date": "2026-04-08T01:16:48.792494+00:00",
     "agreed_rate": 3150
   },
   {
@@ -5956,7 +5956,7 @@
     "status": "booked",
     "company_name": "Gulf Coast Carriers",
     "mc_number": "721594",
-    "agreement_date": "2026-05-11T08:45:00+00:00",
+    "agreement_date": "2026-04-28T06:39:06.446843+00:00",
     "agreed_rate": 2060
   },
   {
@@ -5974,9 +5974,9 @@
     "miles": 627,
     "dimensions": "48x40x50 in pallets",
     "status": "booked",
-    "company_name": "Continental Trans LLC",
-    "mc_number": "918275",
-    "agreement_date": "2026-05-05T10:30:00+00:00",
+    "company_name": "Cascadia Freight Co",
+    "mc_number": "541938",
+    "agreement_date": "2026-04-17T08:16:07.557645+00:00",
     "agreed_rate": 1270
   },
   {
@@ -5994,9 +5994,9 @@
     "miles": 2000,
     "dimensions": "300x102x144 in",
     "status": "booked",
-    "company_name": "J.B. HUNT TRANSPORT INC",
-    "mc_number": "184320",
-    "agreement_date": "2026-05-06T00:00:00+00:00",
-    "agreed_rate": 6489
+    "company_name": "Continental Trans LLC",
+    "mc_number": "918275",
+    "agreement_date": "2026-04-25T10:08:48.405752+00:00",
+    "agreed_rate": 6180
   }
 ]

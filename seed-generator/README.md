@@ -23,6 +23,7 @@ python seed-generator/generate.py
 | Constraint | Where in the script |
 |---|---|
 | Pickup datetimes spread across May 2026 | `random_pickup()` |
+| Call `created_at` and load `agreement_date` land in the past 30 days relative to generation time | `NOW`, `random_recent_dt()` |
 | Origin distribution weighted toward freight hubs (multiple loads from same origin) | `ORIGIN_WEIGHTS`, `weighted_origin()` |
 | 8 chained pairs (load B's origin = load A's destination, 4–24h gap) | `inject_chains()` |
 | Equipment ↔ commodity pairings respected (Reefer↔Frozen/Produce, Flatbed↔Steel, …) | `EQUIPMENT_COMMODITY` |
