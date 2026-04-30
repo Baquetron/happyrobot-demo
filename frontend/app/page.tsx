@@ -97,17 +97,10 @@ export default function Page() {
               href="https://happyrobot.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0E0D0C] rounded-md px-3 py-1.5 flex items-center gap-2 hover:bg-[#1a1918] transition-colors"
+              className="bg-[#0E0D0C] rounded-md px-4 py-2 flex items-center hover:bg-[#1a1918] transition-colors"
               aria-label="Powered by HappyRobot"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/happyrobot-mark.svg"
-                alt=""
-                aria-hidden="true"
-                className="h-5 w-auto"
-              />
-              <span className="text-white text-sm font-semibold tracking-tight leading-none">
+              <span className="text-white text-base font-semibold tracking-tight leading-none">
                 HappyRobot
               </span>
             </a>
