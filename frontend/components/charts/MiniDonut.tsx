@@ -5,6 +5,18 @@ export interface MiniDonutSegment {
   color: string;
 }
 
+function polar(cx: number, cy: number, r: number, deg: number) {
+  const rad = ((deg - 90) * Math.PI) / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function arcPath(cx: number, cy: number, r: number, startDeg: number, endDeg: number) {
+  const start = polar(cx, cy, r, startDeg);
+  const end = polar(cx, cy, r, endDeg);
+  const largeArc = endDeg - startDeg > 180 ? 1 : 0;
+  return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 1 ${end.x} ${end.y}`;
+}
+
 export function MiniDonut({
   segments,
   size = 96,
@@ -14,10 +26,27 @@ export function MiniDonut({
   size?: number;
   thickness?: number;
 }) {
+  const cx = size / 2;
+  const cy = size / 2;
   const r = (size - thickness) / 2;
-  const c = 2 * Math.PI * r;
   const total = segments.reduce((s, x) => s + x.value, 0) || 1;
-  let offset = 0;
+
+  // Walk segments and emit one path per slice. Use 359.99° for full-ring single segments.
+  let acc = 0;
+  const slices = segments
+    .filter((s) => s.value > 0)
+    .map((s) => {
+      const startDeg = (acc / total) * 360;
+      acc += s.value;
+      const endDeg = (acc / total) * 360;
+      const span = Math.min(endDeg - startDeg, 359.99);
+      const pct = ((s.value / total) * 100).toFixed(0);
+      return {
+        ...s,
+        d: arcPath(cx, cy, r, startDeg, startDeg + span),
+        pct,
+      };
+    });
 
   return (
     <div className="flex justify-center">
@@ -25,43 +54,30 @@ export function MiniDonut({
         width={size}
         height={size}
         role="img"
-        aria-label={segments
-          .map((s) => `${s.label}: ${s.value}`)
-          .join(", ")}
+        aria-label={segments.map((s) => `${s.label}: ${s.value}`).join(", ")}
       >
         <circle
-          cx={size / 2}
-          cy={size / 2}
+          cx={cx}
+          cy={cy}
           r={r}
           fill="none"
           stroke="var(--muted)"
           strokeWidth={thickness}
         />
-        {segments.map((s) => {
-          const len = (s.value / total) * c;
-          const dash = `${len} ${c - len}`;
-          const dashOffset = -offset;
-          offset += len;
-          const pct = ((s.value / total) * 100).toFixed(0);
-          return (
-            <circle
-              key={s.key}
-              cx={size / 2}
-              cy={size / 2}
-              r={r}
-              fill="none"
-              stroke={s.color}
-              strokeWidth={thickness}
-              strokeDasharray={dash}
-              strokeDashoffset={dashOffset}
-              transform={`rotate(-90 ${size / 2} ${size / 2})`}
-              strokeLinecap="butt"
-              className="cursor-pointer transition-opacity hover:opacity-80"
-            >
-              <title>{`${s.label}: ${s.value} (${pct}%)`}</title>
-            </circle>
-          );
-        })}
+        {slices.map((s) => (
+          <path
+            key={s.key}
+            d={s.d}
+            fill="none"
+            stroke={s.color}
+            strokeWidth={thickness}
+            strokeLinecap="butt"
+            className="cursor-pointer transition-opacity hover:opacity-80"
+            style={{ pointerEvents: "stroke" }}
+          >
+            <title>{`${s.label}: ${s.value} (${s.pct}%)`}</title>
+          </path>
+        ))}
       </svg>
     </div>
   );

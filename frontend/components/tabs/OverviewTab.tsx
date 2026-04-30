@@ -103,50 +103,55 @@ export function OverviewTab({
         </Card>
       </div>
 
-      {/* Right column: Call Log preview, stretches to match left column, scrolls internally */}
-      <Card className="lg:col-span-2 flex flex-col self-stretch min-h-0 overflow-hidden">
-        <CardHeader>
-          <CardTitle>Call Log</CardTitle>
-          <CardDescription>Most recent calls</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1 min-h-0 p-0 overflow-hidden">
-          <ul className="h-full overflow-y-auto divide-y divide-border">
-            {recent.map((c) => (
-              <li key={c.id} className="px-4 py-3 flex items-center gap-3">
-                <span
-                  className="w-1.5 h-8 rounded-full shrink-0"
-                  style={{
-                    background:
-                      OUTCOME_COLORS[c.outcome] ?? "var(--muted-foreground)",
-                  }}
-                />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm font-medium text-foreground truncate">
-                      {c.carrier_name ?? "—"}
-                    </span>
-                    <span className="text-xs text-muted-foreground shrink-0">
-                      {fmtDuration(c.duration_seconds)}
-                    </span>
+      {/* Right column wrapper. On lg the wrapper is positioned relative and the
+          Card is absolute inset-0, so the wrapper contributes 0 to the grid row
+          sizing — the row height is dictated by the left column, the Card
+          stretches into that bounded box and scrolls internally. */}
+      <div className="lg:col-span-2 lg:relative">
+        <Card className="flex flex-col overflow-hidden lg:absolute lg:inset-0 lg:max-h-none max-h-[60vh]">
+          <CardHeader>
+            <CardTitle>Call Log</CardTitle>
+            <CardDescription>Most recent calls</CardDescription>
+          </CardHeader>
+          <CardContent className="flex-1 min-h-0 p-0 overflow-hidden">
+            <ul className="h-full overflow-y-auto divide-y divide-border">
+              {recent.map((c) => (
+                <li key={c.id} className="px-4 py-3 flex items-center gap-3">
+                  <span
+                    className="w-1.5 h-8 rounded-full shrink-0"
+                    style={{
+                      background:
+                        OUTCOME_COLORS[c.outcome] ?? "var(--muted-foreground)",
+                    }}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-medium text-foreground truncate">
+                        {c.carrier_name ?? "—"}
+                      </span>
+                      <span className="text-xs text-muted-foreground shrink-0">
+                        {fmtDuration(c.duration_seconds)}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                      <span className="truncate">
+                        {OUTCOME_LABELS[c.outcome] ?? c.outcome}
+                        {c.load_id ? ` · ${c.load_id}` : ""}
+                      </span>
+                      <span className="shrink-0">{fmtDateTime(c.created_at)}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                    <span className="truncate">
-                      {OUTCOME_LABELS[c.outcome] ?? c.outcome}
-                      {c.load_id ? ` · ${c.load_id}` : ""}
-                    </span>
-                    <span className="shrink-0">{fmtDateTime(c.created_at)}</span>
-                  </div>
-                </div>
-              </li>
-            ))}
-            {recent.length === 0 && (
-              <li className="px-4 py-8 text-center text-sm text-muted-foreground">
-                No calls yet.
-              </li>
-            )}
-          </ul>
-        </CardContent>
-      </Card>
+                </li>
+              ))}
+              {recent.length === 0 && (
+                <li className="px-4 py-8 text-center text-sm text-muted-foreground">
+                  No calls yet.
+                </li>
+              )}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -13,8 +13,8 @@ export function KpiCard({
   children?: ReactNode;
 }) {
   return (
-    <Card>
-      <CardContent className="flex flex-col gap-2 py-2">
+    <Card className="h-full">
+      <CardContent className="flex flex-col gap-1.5 py-3 h-full">
         <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           {label}
         </span>
@@ -22,7 +22,7 @@ export function KpiCard({
           {value}
         </span>
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
-        {children && <div className="mt-2">{children}</div>}
+        {children && <div className="mt-auto pt-4">{children}</div>}
       </CardContent>
     </Card>
   );
