@@ -74,18 +74,21 @@ export default function Page() {
   return (
     <div className="min-h-screen">
       <header className="bg-card border-b border-border">
-        <div className="mx-auto max-w-[1600px] px-4 py-5 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
-            HR
-          </div>
-          <div>
-            <h1 className="text-base font-semibold text-foreground">
-              Carrier Sales Dashboard
-            </h1>
-            <p className="text-xs text-muted-foreground">
-              HappyRobot inbound voice agent — live metrics
-            </p>
-          </div>
+        <div className="mx-auto max-w-[1600px] px-4 py-4">
+          <h1 className="flex items-baseline gap-2 leading-none">
+            <span
+              className="font-black tracking-tight text-3xl sm:text-4xl"
+              style={{ color: "var(--chart-1)" }}
+            >
+              ACME
+            </span>
+            <span className="font-light italic text-2xl sm:text-3xl text-foreground">
+              Logistics
+            </span>
+          </h1>
+          <p className="mt-1.5 text-xs text-muted-foreground">
+            Inbound voice agent — live metrics
+          </p>
         </div>
       </header>
 
