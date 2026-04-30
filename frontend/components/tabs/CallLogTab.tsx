@@ -25,6 +25,7 @@ import {
   SENTIMENT_LABELS,
 } from "@/lib/colors";
 import { fmtDateTime, fmtDuration, fmtUsd } from "@/lib/format";
+import { clampedTime } from "@/lib/derive";
 import { CallRow } from "@/lib/types";
 
 type SortKey =
@@ -72,6 +73,13 @@ export function CallLogTab({ calls }: { calls: CallRow[] }) {
   const sorted = useMemo(() => {
     const arr = [...filtered];
     arr.sort((a, b) => {
+      // Special-cased: clamp future timestamps to now so freshly inserted
+      // calls beat synthetic future-dated rows. Tie-broken by id desc.
+      if (sortKey === "created_at") {
+        const diff = clampedTime(b.created_at) - clampedTime(a.created_at);
+        const cmp = diff !== 0 ? diff : b.id - a.id;
+        return sortDir === "desc" ? cmp : -cmp;
+      }
       const av = a[sortKey];
       const bv = b[sortKey];
       if (av == null && bv == null) return 0;
