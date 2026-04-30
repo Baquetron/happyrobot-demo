@@ -74,21 +74,42 @@ export default function Page() {
   return (
     <div className="min-h-screen">
       <header className="bg-card border-b border-border">
-        <div className="mx-auto max-w-[1600px] px-4 py-4">
-          <h1 className="flex items-baseline gap-2 leading-none">
-            <span
-              className="font-black tracking-tight text-3xl sm:text-4xl"
-              style={{ color: "var(--chart-1)" }}
-            >
-              ACME
-            </span>
-            <span className="font-light italic text-2xl sm:text-3xl text-foreground">
-              Logistics
-            </span>
-          </h1>
-          <p className="mt-1.5 text-xs text-muted-foreground">
-            Inbound voice agent — live metrics
-          </p>
+        <div className="mx-auto max-w-[1600px] px-4 py-4 flex items-center justify-between gap-4">
+          <div>
+            <h1 className="flex items-baseline gap-2 leading-none">
+              <span
+                className="font-black tracking-tight text-3xl sm:text-4xl"
+                style={{ color: "var(--chart-1)" }}
+              >
+                ACME
+              </span>
+              <span className="font-light italic text-2xl sm:text-3xl text-foreground">
+                Logistics
+              </span>
+            </h1>
+            <p className="mt-1.5 text-xs text-muted-foreground">
+              Inbound voice agent — live metrics
+            </p>
+          </div>
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
+            <span className="italic text-sm text-foreground">Powered by</span>
+            <div className="bg-primary rounded-md px-3 py-1.5 flex items-center gap-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/happyrobot-mark.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-auto"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/happyrobot-wordmark.svg"
+                alt="HappyRobot"
+                className="h-3.5 w-auto"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </div>
+          </div>
         </div>
       </header>
 

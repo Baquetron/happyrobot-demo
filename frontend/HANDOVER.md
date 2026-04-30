@@ -75,7 +75,8 @@ See [design.md](./design.md) for the full design system. Highlights:
 
 Newest at top. Keep entries short — link to commits for detail.
 
-- **(this commit)** — Header chrome swapped to "ACME Logistics" branding for the demo. Recreated as styled text (Inter Black amber `ACME` + light italic `Logistics`), no raster asset; only the dashboard header changed — HappyRobot wordmark/mark SVGs in `public/` and the rest of the chrome stay as-is.
+- **(this commit)** — "Powered by HappyRobot" badge added to the top-right of the header. Italic "Powered by" + dark `bg-primary` (#0E0D0C) tile containing `happyrobot-mark.svg` (already white) and `happyrobot-wordmark.svg` rendered white via `filter: brightness(0) invert(1)`. Hidden below `sm` to avoid header crowding on mobile.
+- **`7bc28a6`** — Header chrome swapped to "ACME Logistics" branding for the demo. Recreated as styled text (Inter Black amber `ACME` + light italic `Logistics`), no raster asset; only the dashboard header changed — HappyRobot wordmark/mark SVGs in `public/` and the rest of the chrome stay as-is.
 - **`9806559`** — Rounds KPI labels back to terse `1` / `2` / `3` and inline legend re-enabled, so bars align across all 4 KPI cards again. Hover tooltips still on. (Iteration on the previous two commits.)
 - **`5b04e54`** — SegBar gets hover tooltips on every segment (label/count/%); `showLegend` prop opts out of the inline under-bar legend.
 - **`290010f`** — Spelled out "round"/"rounds" in negotiation rounds KPI legend
