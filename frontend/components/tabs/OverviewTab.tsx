@@ -46,6 +46,9 @@ export function OverviewTab({
   ];
 
   const rounds = bookingsByRound(calls);
+  // Hover tooltip uses these labels — kept explicit so the popover reads clearly.
+  // Inline under-bar legend is suppressed for this card (showLegend={false}) since
+  // the title + hint already convey context and the labels would overlap.
   const roundsSegments = [
     { key: "r1", label: "1 round", value: rounds[0].value, color: "var(--chart-1)" },
     { key: "r2", label: "2 rounds", value: rounds[1].value, color: "var(--chart-2)" },
@@ -81,7 +84,7 @@ export function OverviewTab({
             value={fmtNum(metrics.avg_negotiation_rounds, 2)}
             hint="Bookings closed at each round"
           >
-            <SegBar segments={roundsSegments} />
+            <SegBar segments={roundsSegments} showLegend={false} />
           </KpiCard>
 
           <KpiCard

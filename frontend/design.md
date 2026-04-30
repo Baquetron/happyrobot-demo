@@ -73,7 +73,7 @@ When a primitive is missing, run `npx shadcn add` rather than building it.
 
 - **[MiniDonut](components/charts/MiniDonut.tsx)** — small ring with hoverable per-segment arcs. Each slice is its own `<path>` with `pointerEvents: "stroke"`; non-hovered slices fade to 40% opacity and a custom popover above the ring shows label + count + percent immediately. No legend — info is hover-only.
 
-- **[SegBar](components/charts/SegBar.tsx)** — horizontal stacked bar with inline legend. Used in three of the four KPI cards.
+- **[SegBar](components/charts/SegBar.tsx)** — horizontal stacked bar with hover tooltips on each segment (label + count + %). The inline under-bar legend is opt-out via `showLegend={false}` — drop it when labels would overlap or when the surrounding context (title + hint) already conveys the breakdown.
 
 - **[Bars / Donut / Line](components/charts/)** — Recharts wrappers using shadcn's `<ChartContainer>` so series colors come from `--chart-*` automatically. Strokes/fills/gridlines use `var(--muted-foreground)`, `var(--border)`, never hex.
 
