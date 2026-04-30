@@ -75,7 +75,8 @@ See [design.md](./design.md) for the full design system. Highlights:
 
 Newest at top. Keep entries short — link to commits for detail.
 
-- **(this commit)** — SegBar gets hover tooltips on every segment (label/count/%); `showLegend` prop opts out of the inline under-bar legend. Disabled on the Avg Negotiation Rounds card where labels were overlapping; kept on Total calls and Avg call duration where short labels fit.
+- **(this commit)** — Rounds KPI labels back to terse `1` / `2` / `3` and inline legend re-enabled, so bars align across all 4 KPI cards again. Hover tooltips still on. (Iteration on the previous two commits.)
+- **`5b04e54`** — SegBar gets hover tooltips on every segment (label/count/%); `showLegend` prop opts out of the inline under-bar legend.
 - **`290010f`** — Spelled out "round"/"rounds" in negotiation rounds KPI legend
 - **`1aa58ca`** — Clamp future `created_at` for Call Log sort + id tie-breaker
 - **`12e994f`** — 30s polling with tab-visibility pause
