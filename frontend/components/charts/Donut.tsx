@@ -23,7 +23,7 @@ export function Donut({ data }: { data: DonutDatum[] }) {
   ) satisfies ChartConfig;
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex flex-col sm:flex-row items-center gap-6">
       <div className="relative w-40 h-40 shrink-0">
         <ChartContainer config={config} className="w-full h-full">
           <PieChart>
@@ -60,17 +60,17 @@ export function Donut({ data }: { data: DonutDatum[] }) {
           <span className="text-xs text-muted-foreground">total</span>
         </div>
       </div>
-      <ul className="flex-1 space-y-2">
+      <ul className="flex-1 min-w-0 w-full space-y-2">
         {data.map((d) => (
-          <li key={d.key} className="flex items-center justify-between text-sm">
-            <span className="flex items-center gap-2">
+          <li key={d.key} className="flex items-center justify-between gap-3 text-sm">
+            <span className="flex items-center gap-2 min-w-0">
               <span
-                className="w-2.5 h-2.5 rounded-sm"
+                className="w-2.5 h-2.5 rounded-sm shrink-0"
                 style={{ background: d.color }}
               />
-              <span className="text-muted-foreground">{d.label}</span>
+              <span className="text-muted-foreground truncate">{d.label}</span>
             </span>
-            <span className="text-foreground font-medium tabular-nums">
+            <span className="text-foreground font-medium tabular-nums shrink-0">
               {d.value}
               <span className="text-muted-foreground ml-1.5 text-xs">
                 {total ? `${((d.value / total) * 100).toFixed(0)}%` : "0%"}
