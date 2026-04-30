@@ -93,7 +93,7 @@ export default function Page() {
           </div>
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <span className="italic text-sm text-foreground">Powered by</span>
-            <div className="bg-primary rounded-md px-3 py-1.5 flex items-center gap-2">
+            <div className="bg-[#0E0D0C] rounded-md px-3 py-1.5 flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/happyrobot-mark.svg"
