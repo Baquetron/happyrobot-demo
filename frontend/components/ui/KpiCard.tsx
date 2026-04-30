@@ -1,13 +1,16 @@
+import { ReactNode } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function KpiCard({
   label,
   value,
   hint,
+  children,
 }: {
   label: string;
   value: string;
   hint?: string;
+  children?: ReactNode;
 }) {
   return (
     <Card>
@@ -19,6 +22,7 @@ export function KpiCard({
           {value}
         </span>
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
+        {children && <div className="mt-2">{children}</div>}
       </CardContent>
     </Card>
   );

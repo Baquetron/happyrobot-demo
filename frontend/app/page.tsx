@@ -64,7 +64,7 @@ export default function Page() {
         {!error && (!metrics || !calls) && <DashboardSkeleton />}
         {!error && metrics && calls && (
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList>
+            <TabsList className="self-center">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="negotiations">Negotiations</TabsTrigger>
               <TabsTrigger value="carriers">Carriers</TabsTrigger>

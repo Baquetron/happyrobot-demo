@@ -9,8 +9,15 @@ import {
 } from "@/components/ui/card";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { VolumeLine } from "@/components/charts/Line";
+import { MiniDonut } from "@/components/charts/MiniDonut";
+import { SegBar } from "@/components/charts/SegBar";
 import { OUTCOME_COLORS, OUTCOME_LABELS } from "@/lib/colors";
-import { callsByDay, recentCalls } from "@/lib/derive";
+import {
+  bookingsByRound,
+  callDurationBuckets,
+  callsByDay,
+  recentCalls,
+} from "@/lib/derive";
 import { fmtDateTime, fmtDuration, fmtNum, fmtPct } from "@/lib/format";
 import { CallRow, MetricsResponse } from "@/lib/types";
 
@@ -22,36 +29,76 @@ export function OverviewTab({
   calls: CallRow[];
 }) {
   const volume = callsByDay(calls).map((d) => ({ label: d.label, value: d.total }));
-  const recent = recentCalls(calls, 10);
+  const recent = recentCalls(calls, 30);
+
+  const outcomeSegments = metrics.outcomes.map((o) => ({
+    key: o.outcome,
+    label: OUTCOME_LABELS[o.outcome] ?? o.outcome,
+    value: o.count,
+    color: OUTCOME_COLORS[o.outcome] ?? "var(--muted-foreground)",
+  }));
+
+  const totalBooked = metrics.booked_calls;
+  const totalNotBooked = Math.max(0, metrics.total_calls - totalBooked);
+  const totalCallsSegments = [
+    { key: "booked", label: "Booked", value: totalBooked, color: "var(--chart-1)" },
+    { key: "other", label: "Not booked", value: totalNotBooked, color: "var(--chart-3)" },
+  ];
+
+  const rounds = bookingsByRound(calls);
+  const roundsSegments = [
+    { key: "r1", label: "1", value: rounds[0].value, color: "var(--chart-1)" },
+    { key: "r2", label: "2", value: rounds[1].value, color: "var(--chart-2)" },
+    { key: "r3", label: "3+", value: rounds[2].value, color: "var(--chart-3)" },
+  ];
+
+  const durations = callDurationBuckets(calls);
+  const durationSegments = [
+    { key: "u", label: durations[0].label, value: durations[0].value, color: "var(--chart-4)" },
+    { key: "m", label: durations[1].label, value: durations[1].value, color: "var(--chart-1)" },
+    { key: "o", label: durations[2].label, value: durations[2].value, color: "var(--chart-3)" },
+  ];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:auto-rows-min">
-      {/* KPIs (top-left, 4 cols on lg) */}
+      {/* KPIs (top, span 3 cols on lg) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:col-span-3">
         <KpiCard
           label="Booking rate"
           value={fmtPct(metrics.conversion_rate)}
           hint={`${metrics.booked_calls} of ${metrics.total_calls} booked`}
-        />
-        <KpiCard label="Total calls" value={fmtNum(metrics.total_calls)} />
+        >
+          <MiniDonut segments={outcomeSegments} />
+        </KpiCard>
+
+        <KpiCard label="Total calls" value={fmtNum(metrics.total_calls)}>
+          <SegBar segments={totalCallsSegments} />
+        </KpiCard>
+
         <KpiCard
           label="Avg negotiation rounds"
           value={fmtNum(metrics.avg_negotiation_rounds, 2)}
-        />
+          hint="Bookings closed at each round"
+        >
+          <SegBar segments={roundsSegments} />
+        </KpiCard>
+
         <KpiCard
           label="Avg call duration"
           value={fmtDuration(metrics.avg_call_duration)}
-        />
+        >
+          <SegBar segments={durationSegments} />
+        </KpiCard>
       </div>
 
-      {/* Call Log preview (right column, spans both rows) */}
-      <Card className="lg:col-start-4 lg:col-span-2 lg:row-start-1 lg:row-span-2">
+      {/* Call Log preview (right column, spans both rows, scrollable) */}
+      <Card className="flex flex-col min-h-0 lg:col-start-4 lg:col-span-2 lg:row-start-1 lg:row-span-2">
         <CardHeader>
           <CardTitle>Call Log</CardTitle>
           <CardDescription>Most recent calls</CardDescription>
         </CardHeader>
-        <CardContent className="p-0">
-          <ul className="divide-y divide-border">
+        <CardContent className="flex-1 min-h-0 p-0 overflow-hidden">
+          <ul className="h-full overflow-y-auto divide-y divide-border">
             {recent.map((c) => (
               <li key={c.id} className="px-4 py-3 flex items-center gap-3">
                 <span
@@ -89,7 +136,7 @@ export function OverviewTab({
         </CardContent>
       </Card>
 
-      {/* Call Volume (left, spans 4 cols) */}
+      {/* Call Volume (left, spans 3 cols, second row) */}
       <Card className="lg:col-span-3 lg:row-start-2">
         <CardHeader>
           <CardTitle>Call volume</CardTitle>

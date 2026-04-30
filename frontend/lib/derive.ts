@@ -141,6 +141,43 @@ export function winLossByRound(
   }));
 }
 
+export function bookingsByRound(
+  calls: CallRow[]
+): { round: string; value: number }[] {
+  const buckets = { "1": 0, "2": 0, "3+": 0 };
+  for (const c of calls) {
+    if (c.outcome !== "booked") continue;
+    if (c.negotiation_rounds <= 1) buckets["1"]++;
+    else if (c.negotiation_rounds === 2) buckets["2"]++;
+    else buckets["3+"]++;
+  }
+  return [
+    { round: "1", value: buckets["1"] },
+    { round: "2", value: buckets["2"] },
+    { round: "3+", value: buckets["3+"] },
+  ];
+}
+
+export function callDurationBuckets(
+  calls: CallRow[]
+): { label: string; value: number }[] {
+  let under = 0;
+  let mid = 0;
+  let over = 0;
+  for (const c of calls) {
+    const s = c.duration_seconds;
+    if (s == null) continue;
+    if (s < 120) under++;
+    else if (s <= 180) mid++;
+    else over++;
+  }
+  return [
+    { label: "< 2m", value: under },
+    { label: "2–3m", value: mid },
+    { label: "> 3m", value: over },
+  ];
+}
+
 export function failedVerificationRate(
   outcomes: { outcome: string; count: number }[]
 ): number {
