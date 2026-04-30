@@ -93,22 +93,24 @@ export default function Page() {
           </div>
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <span className="italic text-sm text-foreground">Powered by</span>
-            <div className="bg-[#0E0D0C] rounded-md px-3 py-1.5 flex items-center gap-2">
+            <a
+              href="https://happyrobot.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0E0D0C] rounded-md px-3 py-1.5 flex items-center gap-2 hover:bg-[#1a1918] transition-colors"
+              aria-label="Powered by HappyRobot"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/happyrobot-mark.svg"
                 alt=""
                 aria-hidden="true"
-                className="h-6 w-auto"
+                className="h-5 w-auto"
               />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/happyrobot-wordmark.svg"
-                alt="HappyRobot"
-                className="h-3.5 w-auto"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-            </div>
+              <span className="text-white text-sm font-semibold tracking-tight leading-none">
+                HappyRobot
+              </span>
+            </a>
           </div>
         </div>
       </header>
