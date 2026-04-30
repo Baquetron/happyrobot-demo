@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/ui/AppCard";
 import { OUTCOME_COLORS, OUTCOME_LABELS, SENTIMENT_COLORS, SENTIMENT_LABELS } from "@/lib/colors";
 import { fmtDateTime, fmtDuration, fmtUsd } from "@/lib/format";
 import { CallRow } from "@/lib/types";

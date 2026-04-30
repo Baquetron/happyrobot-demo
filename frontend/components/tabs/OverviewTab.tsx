@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card, CardHeader } from "@/components/ui/AppCard";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { Donut } from "@/components/charts/Donut";
 import { VolumeLine } from "@/components/charts/Line";
@@ -16,7 +16,7 @@ export function OverviewTab({
   metrics: MetricsResponse;
   calls: CallRow[];
 }) {
-  const volume = callsByDay(calls);
+  const volume = callsByDay(calls).map((d) => ({ label: d.label, value: d.total }));
   const outcomeDonut = metrics.outcomes.map((o) => ({
     key: o.outcome,
     label: OUTCOME_LABELS[o.outcome] ?? o.outcome,

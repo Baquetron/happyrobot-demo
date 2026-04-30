@@ -1,19 +1,15 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from "recharts";
 
-const axisStyle = { fontSize: 12, fill: "#737373" } as const;
-const gridStroke = "#F1F5F9";
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
 export interface SimpleBarDatum {
   label: string;
@@ -24,35 +20,41 @@ export interface SimpleBarDatum {
 export function SimpleBars({
   data,
   height = 240,
-  defaultColor = "#2563EB",
+  defaultColor = "var(--chart-1)",
 }: {
   data: SimpleBarDatum[];
   height?: number;
   defaultColor?: string;
 }) {
+  const config = { value: { label: "Value", color: defaultColor } } satisfies ChartConfig;
+
   return (
-    <div style={{ width: "100%", height }}>
-      <ResponsiveContainer>
-        <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke={gridStroke} vertical={false} />
-          <XAxis dataKey="label" tick={axisStyle} axisLine={false} tickLine={false} />
-          <YAxis tick={axisStyle} axisLine={false} tickLine={false} allowDecimals={false} />
-          <Tooltip
-            cursor={{ fill: "#F8FAFC" }}
-            contentStyle={{
-              borderRadius: 8,
-              border: "1px solid #E5E7EB",
-              fontSize: 12,
-            }}
-          />
-          <Bar dataKey="value" radius={[6, 6, 0, 0]}>
-            {data.map((d, i) => (
-              <Cell key={i} fill={d.color ?? defaultColor} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <ChartContainer config={config} style={{ width: "100%", height }}>
+      <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+        <CartesianGrid stroke="var(--border)" vertical={false} />
+        <XAxis
+          dataKey="label"
+          tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+          axisLine={false}
+          tickLine={false}
+        />
+        <YAxis
+          tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+          axisLine={false}
+          tickLine={false}
+          allowDecimals={false}
+        />
+        <ChartTooltip
+          cursor={{ fill: "var(--muted)" }}
+          content={<ChartTooltipContent />}
+        />
+        <Bar dataKey="value" radius={[6, 6, 0, 0]}>
+          {data.map((d, i) => (
+            <Cell key={i} fill={d.color ?? defaultColor} />
+          ))}
+        </Bar>
+      </BarChart>
+    </ChartContainer>
   );
 }
 
@@ -70,38 +72,42 @@ export function StackedBars({
   series: { key: string; label: string; color: string }[];
   height?: number;
 }) {
+  const config = Object.fromEntries(
+    series.map((s) => [s.key, { label: s.label, color: s.color }]),
+  ) satisfies ChartConfig;
+
   return (
-    <div style={{ width: "100%", height }}>
-      <ResponsiveContainer>
-        <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke={gridStroke} vertical={false} />
-          <XAxis dataKey="label" tick={axisStyle} axisLine={false} tickLine={false} />
-          <YAxis tick={axisStyle} axisLine={false} tickLine={false} allowDecimals={false} />
-          <Tooltip
-            cursor={{ fill: "#F8FAFC" }}
-            contentStyle={{
-              borderRadius: 8,
-              border: "1px solid #E5E7EB",
-              fontSize: 12,
-            }}
+    <ChartContainer config={config} style={{ width: "100%", height }}>
+      <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+        <CartesianGrid stroke="var(--border)" vertical={false} />
+        <XAxis
+          dataKey="label"
+          tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+          axisLine={false}
+          tickLine={false}
+        />
+        <YAxis
+          tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+          axisLine={false}
+          tickLine={false}
+          allowDecimals={false}
+        />
+        <ChartTooltip
+          cursor={{ fill: "var(--muted)" }}
+          content={<ChartTooltipContent />}
+        />
+        <ChartLegend content={<ChartLegendContent />} />
+        {series.map((s, i) => (
+          <Bar
+            key={s.key}
+            dataKey={s.key}
+            name={s.label}
+            stackId="x"
+            fill={`var(--color-${s.key})`}
+            radius={i === series.length - 1 ? [6, 6, 0, 0] : 0}
           />
-          <Legend
-            wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
-            iconType="circle"
-            iconSize={8}
-          />
-          {series.map((s, i) => (
-            <Bar
-              key={s.key}
-              dataKey={s.key}
-              name={s.label}
-              stackId="x"
-              fill={s.color}
-              radius={i === series.length - 1 ? [6, 6, 0, 0] : 0}
-            />
-          ))}
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+        ))}
+      </BarChart>
+    </ChartContainer>
   );
 }

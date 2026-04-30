@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card, CardHeader } from "@/components/ui/AppCard";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { SimpleBars, StackedBars } from "@/components/charts/Bars";
 import {
