@@ -1,8 +1,15 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/AppCard";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { SimpleBars, StackedBars } from "@/components/charts/Bars";
+import { OUTCOME_COLORS } from "@/lib/colors";
 import {
   firstRoundAcceptanceRate,
   rateEfficiency,
@@ -52,24 +59,28 @@ export function NegotiationsTab({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
-          <CardHeader
-            title="Rounds distribution"
-            subtitle="How many rounds calls take"
-          />
-          <SimpleBars data={rounds} />
+          <CardHeader>
+            <CardTitle>Rounds distribution</CardTitle>
+            <CardDescription>How many rounds calls take</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <SimpleBars data={rounds} />
+          </CardContent>
         </Card>
         <Card>
-          <CardHeader
-            title="Win / loss by round"
-            subtitle="Booked vs rejected at each round"
-          />
-          <StackedBars
-            data={winLoss}
-            series={[
-              { key: "booked", label: "Booked", color: "#2563EB" },
-              { key: "rejected", label: "Rejected", color: "#F59E0B" },
-            ]}
-          />
+          <CardHeader>
+            <CardTitle>Win / loss by round</CardTitle>
+            <CardDescription>Booked vs rejected at each round</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <StackedBars
+              data={winLoss}
+              series={[
+                { key: "booked", label: "Booked", color: OUTCOME_COLORS.booked },
+                { key: "rejected", label: "Rejected", color: OUTCOME_COLORS.rejected },
+              ]}
+            />
+          </CardContent>
         </Card>
       </div>
     </div>

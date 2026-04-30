@@ -1,4 +1,4 @@
-import { Card } from "./AppCard";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function KpiCard({
   label,
@@ -10,12 +10,16 @@ export function KpiCard({
   hint?: string;
 }) {
   return (
-    <Card className="flex flex-col gap-2">
-      <span className="text-xs font-medium uppercase tracking-wider text-ink-subtle">
-        {label}
-      </span>
-      <span className="text-3xl font-semibold text-ink tabular-nums">{value}</span>
-      {hint && <span className="text-xs text-ink-muted">{hint}</span>}
+    <Card>
+      <CardContent className="flex flex-col gap-2 py-2">
+        <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          {label}
+        </span>
+        <span className="text-3xl font-semibold text-foreground tabular-nums">
+          {value}
+        </span>
+        {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
+      </CardContent>
     </Card>
   );
 }

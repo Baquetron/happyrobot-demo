@@ -1,10 +1,21 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/AppCard";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { Donut } from "@/components/charts/Donut";
 import { SimpleBars } from "@/components/charts/Bars";
-import { OUTCOME_COLORS, OUTCOME_LABELS, SENTIMENT_COLORS, SENTIMENT_LABELS } from "@/lib/colors";
+import {
+  OUTCOME_COLORS,
+  OUTCOME_LABELS,
+  SENTIMENT_COLORS,
+  SENTIMENT_LABELS,
+} from "@/lib/colors";
 import { failedVerificationRate } from "@/lib/derive";
 import { fmtPct } from "@/lib/format";
 import { MetricsResponse } from "@/lib/types";
@@ -16,7 +27,7 @@ export function CarriersTab({ metrics }: { metrics: MetricsResponse }) {
     key: s.sentiment,
     label: SENTIMENT_LABELS[s.sentiment] ?? s.sentiment,
     value: s.count,
-    color: SENTIMENT_COLORS[s.sentiment] ?? "#94A3B8",
+    color: SENTIMENT_COLORS[s.sentiment] ?? "var(--muted-foreground)",
   }));
 
   const rejectionBars = NEGATIVE_OUTCOMES.map((o) => {
@@ -52,18 +63,22 @@ export function CarriersTab({ metrics }: { metrics: MetricsResponse }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
-          <CardHeader
-            title="Carrier sentiment"
-            subtitle="Tone captured at end of call"
-          />
-          <Donut data={sentimentDonut} />
+          <CardHeader>
+            <CardTitle>Carrier sentiment</CardTitle>
+            <CardDescription>Tone captured at end of call</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Donut data={sentimentDonut} />
+          </CardContent>
         </Card>
         <Card>
-          <CardHeader
-            title="Top non-booking outcomes"
-            subtitle="Why calls don't convert"
-          />
-          <SimpleBars data={rejectionBars} />
+          <CardHeader>
+            <CardTitle>Top non-booking outcomes</CardTitle>
+            <CardDescription>Why calls don&apos;t convert</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <SimpleBars data={rejectionBars} />
+          </CardContent>
         </Card>
       </div>
     </div>

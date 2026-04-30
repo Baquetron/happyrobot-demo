@@ -1,6 +1,12 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/AppCard";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { Donut } from "@/components/charts/Donut";
 import { VolumeLine } from "@/components/charts/Line";
@@ -21,7 +27,7 @@ export function OverviewTab({
     key: o.outcome,
     label: OUTCOME_LABELS[o.outcome] ?? o.outcome,
     value: o.count,
-    color: OUTCOME_COLORS[o.outcome] ?? "#94A3B8",
+    color: OUTCOME_COLORS[o.outcome] ?? "var(--muted-foreground)",
   }));
 
   return (
@@ -41,16 +47,22 @@ export function OverviewTab({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <Card className="lg:col-span-2">
-          <CardHeader title="Call volume" subtitle="Calls per day" />
-          {volume.length ? (
-            <VolumeLine data={volume} />
-          ) : (
-            <EmptyChart />
-          )}
+          <CardHeader>
+            <CardTitle>Call volume</CardTitle>
+            <CardDescription>Calls per day</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {volume.length ? <VolumeLine data={volume} /> : <EmptyChart />}
+          </CardContent>
         </Card>
         <Card>
-          <CardHeader title="Outcomes" subtitle="Distribution across all calls" />
-          <Donut data={outcomeDonut} />
+          <CardHeader>
+            <CardTitle>Outcomes</CardTitle>
+            <CardDescription>Distribution across all calls</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Donut data={outcomeDonut} />
+          </CardContent>
         </Card>
       </div>
     </div>
@@ -59,7 +71,7 @@ export function OverviewTab({
 
 function EmptyChart() {
   return (
-    <div className="h-[260px] flex items-center justify-center text-sm text-ink-subtle">
+    <div className="h-[260px] flex items-center justify-center text-sm text-muted-foreground">
       No data
     </div>
   );

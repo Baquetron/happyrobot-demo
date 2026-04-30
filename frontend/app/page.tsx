@@ -1,22 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Tabs } from "@/components/ui/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { OverviewTab } from "@/components/tabs/OverviewTab";
 import { NegotiationsTab } from "@/components/tabs/NegotiationsTab";
 import { CarriersTab } from "@/components/tabs/CarriersTab";
 import { CallLogTab } from "@/components/tabs/CallLogTab";
 import { CallRow, MetricsResponse } from "@/lib/types";
 
-const TABS = [
-  { id: "overview", label: "Overview" },
-  { id: "negotiations", label: "Negotiations" },
-  { id: "carriers", label: "Carriers" },
-  { id: "calls", label: "Call Log" },
-];
-
 export default function Page() {
-  const [active, setActive] = useState("overview");
   const [metrics, setMetrics] = useState<MetricsResponse | null>(null);
   const [calls, setCalls] = useState<CallRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -47,43 +40,53 @@ export default function Page() {
 
   return (
     <div className="min-h-screen">
-      <header className="bg-white border-b border-border">
+      <header className="bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-white font-semibold text-sm">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
               HR
             </div>
             <div>
-              <h1 className="text-base font-semibold text-ink">
+              <h1 className="text-base font-semibold text-foreground">
                 Carrier Sales Dashboard
               </h1>
-              <p className="text-xs text-ink-subtle">
+              <p className="text-xs text-muted-foreground">
                 HappyRobot inbound voice agent — live metrics
               </p>
             </div>
           </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6">
-          <Tabs tabs={TABS} active={active} onChange={setActive} />
+          <ThemeToggle />
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         {error && (
-          <div className="bg-white border border-negative/30 text-negative rounded-card p-4 text-sm">
+          <div className="bg-card border border-destructive/30 text-destructive rounded-xl p-4 text-sm">
             Failed to load data: {error}
           </div>
         )}
         {!error && (!metrics || !calls) && <DashboardSkeleton />}
         {!error && metrics && calls && (
-          <>
-            {active === "overview" && <OverviewTab metrics={metrics} calls={calls} />}
-            {active === "negotiations" && (
+          <Tabs defaultValue="overview" className="space-y-6">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="negotiations">Negotiations</TabsTrigger>
+              <TabsTrigger value="carriers">Carriers</TabsTrigger>
+              <TabsTrigger value="calls">Call Log</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview">
+              <OverviewTab metrics={metrics} calls={calls} />
+            </TabsContent>
+            <TabsContent value="negotiations">
               <NegotiationsTab metrics={metrics} calls={calls} />
-            )}
-            {active === "carriers" && <CarriersTab metrics={metrics} />}
-            {active === "calls" && <CallLogTab calls={calls} />}
-          </>
+            </TabsContent>
+            <TabsContent value="carriers">
+              <CarriersTab metrics={metrics} />
+            </TabsContent>
+            <TabsContent value="calls">
+              <CallLogTab calls={calls} />
+            </TabsContent>
+          </Tabs>
         )}
       </main>
     </div>
@@ -97,13 +100,13 @@ function DashboardSkeleton() {
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
-            className="h-28 bg-white border border-border rounded-card shadow-card animate-pulse"
+            className="h-28 bg-card border border-border rounded-xl animate-pulse"
           />
         ))}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <div className="h-80 bg-white border border-border rounded-card shadow-card animate-pulse lg:col-span-2" />
-        <div className="h-80 bg-white border border-border rounded-card shadow-card animate-pulse" />
+        <div className="h-80 bg-card border border-border rounded-xl animate-pulse lg:col-span-2" />
+        <div className="h-80 bg-card border border-border rounded-xl animate-pulse" />
       </div>
     </div>
   );
