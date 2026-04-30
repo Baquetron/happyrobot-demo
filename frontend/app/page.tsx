@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OverviewTab } from "@/components/tabs/OverviewTab";
 import { NegotiationsTab } from "@/components/tabs/NegotiationsTab";
@@ -8,34 +8,68 @@ import { CarriersTab } from "@/components/tabs/CarriersTab";
 import { CallLogTab } from "@/components/tabs/CallLogTab";
 import { CallRow, MetricsResponse } from "@/lib/types";
 
+const REFRESH_INTERVAL_MS = 30_000;
+
 export default function Page() {
   const [metrics, setMetrics] = useState<MetricsResponse | null>(null);
   const [calls, setCalls] = useState<CallRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const aliveRef = useRef(true);
+
+  const refresh = useCallback(async () => {
+    try {
+      const [mRes, cRes] = await Promise.all([
+        fetch("/api/metrics", { cache: "no-store" }),
+        fetch("/api/calls?limit=500", { cache: "no-store" }),
+      ]);
+      if (!mRes.ok) throw new Error(`metrics ${mRes.status}`);
+      if (!cRes.ok) throw new Error(`calls ${cRes.status}`);
+      const m = (await mRes.json()) as MetricsResponse;
+      const c = (await cRes.json()) as CallRow[];
+      if (!aliveRef.current) return;
+      setMetrics(m);
+      setCalls(c);
+      setError(null);
+    } catch (e) {
+      if (aliveRef.current) {
+        setError(e instanceof Error ? e.message : "Failed to load");
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        const [mRes, cRes] = await Promise.all([
-          fetch("/api/metrics"),
-          fetch("/api/calls?limit=500"),
-        ]);
-        if (!mRes.ok) throw new Error(`metrics ${mRes.status}`);
-        if (!cRes.ok) throw new Error(`calls ${cRes.status}`);
-        const m = (await mRes.json()) as MetricsResponse;
-        const c = (await cRes.json()) as CallRow[];
-        if (!alive) return;
-        setMetrics(m);
-        setCalls(c);
-      } catch (e) {
-        if (alive) setError(e instanceof Error ? e.message : "Failed to load");
-      }
-    })();
-    return () => {
-      alive = false;
+    aliveRef.current = true;
+    refresh();
+
+    let timer: ReturnType<typeof setInterval> | null = null;
+    const start = () => {
+      if (timer != null) return;
+      timer = setInterval(refresh, REFRESH_INTERVAL_MS);
     };
-  }, []);
+    const stop = () => {
+      if (timer != null) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") {
+        refresh();
+        start();
+      } else {
+        stop();
+      }
+    };
+
+    if (document.visibilityState === "visible") start();
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      aliveRef.current = false;
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [refresh]);
 
   return (
     <div className="min-h-screen">
