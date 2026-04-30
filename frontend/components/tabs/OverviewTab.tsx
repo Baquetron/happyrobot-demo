@@ -47,9 +47,9 @@ export function OverviewTab({
 
   const rounds = bookingsByRound(calls);
   const roundsSegments = [
-    { key: "r1", label: "1", value: rounds[0].value, color: "var(--chart-1)" },
-    { key: "r2", label: "2", value: rounds[1].value, color: "var(--chart-2)" },
-    { key: "r3", label: "3+", value: rounds[2].value, color: "var(--chart-3)" },
+    { key: "r1", label: "1 round", value: rounds[0].value, color: "var(--chart-1)" },
+    { key: "r2", label: "2 rounds", value: rounds[1].value, color: "var(--chart-2)" },
+    { key: "r3", label: "3+ rounds", value: rounds[2].value, color: "var(--chart-3)" },
   ];
 
   const durations = callDurationBuckets(calls);
