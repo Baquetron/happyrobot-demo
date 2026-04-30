@@ -290,20 +290,11 @@ export function sentimentByOutcome(calls: CallRow[]): {
   }));
 }
 
-// Synthetic seed data has timestamps up to a month in the future, which
-// would push real new calls (stamped NOW) below them. Clamp future
-// timestamps to now for sorting so any newly-inserted call appears at
-// the top. The displayed timestamp stays as-is — only the sort key lies.
-export function clampedTime(createdAt: string): number {
-  const t = new Date(createdAt).getTime();
-  return Math.min(t, Date.now());
-}
-
 export function recentCalls(calls: CallRow[], limit = 5): CallRow[] {
   return [...calls]
     .sort((a, b) => {
-      const diff = clampedTime(b.created_at) - clampedTime(a.created_at);
-      // Tie-breaker: highest id first, so a brand-new call beats clamped synthetic rows.
+      const diff = new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      // Tie-breaker: highest id first, so a brand-new call wins on equal timestamps.
       return diff !== 0 ? diff : b.id - a.id;
     })
     .slice(0, limit);

@@ -65,7 +65,7 @@ See [design.md](./design.md) for the full design system. Highlights:
 
 - **macOS case-insensitive filesystem:** shadcn primitives are lowercase (`card.tsx`, `tabs.tsx`). Custom components must avoid PascalCase collisions or `shadcn add` will prompt to overwrite. We renamed the original `Card.tsx` → `AppCard.tsx` (later deleted) and `Tabs.tsx` → `AppTabs.tsx` (later deleted).
 
-- **Synthetic seed has future timestamps:** the seed-generator in [seed-generator/generate.py](../seed-generator/generate.py) anchors `created_at` to May 2026 (up to a month ahead). The frontend uses `clampedTime()` in [derive.ts](lib/derive.ts) to clamp future dates to `Date.now()` for **sort** comparisons only — display still shows the raw timestamp. Tie-breaker: `id` desc so a brand-new real call beats clamped synthetic rows.
+- **Synthetic seed timestamps:** previously included future dates from May 2026 onward, which required a `clampedTime()` workaround. **Resolved** — the user adjusted the data so all sample calls are in the past. Sort now uses raw `created_at` desc with `id` desc as tie-breaker so identically-timestamped new rows still land on top.
 
 - **Call Log preview height:** the right card in OverviewTab uses a `relative` wrapper + `lg:absolute lg:inset-0` Card so the wrapper contributes 0 to grid row sizing and the row is dictated by the left column. Without this, the 30-row list would inflate the grid and force the page to scroll.
 
@@ -75,7 +75,8 @@ See [design.md](./design.md) for the full design system. Highlights:
 
 Newest at top. Keep entries short — link to commits for detail.
 
-- **(this commit)** — Both SVG files in `public/` (mark + wordmark) actually contain unrelated shipping-company artwork (CMA CGM, Ryder, etc.), not HappyRobot. Drop the mark image too. Badge is now text-only "HappyRobot" in semibold white at `text-base`, larger padding, same dark `#0E0D0C` background and external link.
+- **(this commit)** — Drop `clampedTime()` workaround; user fixed the seed so all sample calls are in the past. Sort by raw `created_at` desc with `id` desc tie-breaker, applied to both Overview Call Log preview and the Call Log table's Time column.
+- **`673628f`** — Both SVG files in `public/` (mark + wordmark) actually contain unrelated shipping-company artwork (CMA CGM, Ryder, etc.), not HappyRobot. Drop the mark image too. Badge is now text-only "HappyRobot" in semibold white at `text-base`, larger padding, same dark `#0E0D0C` background and external link.
 - **`8f77aea`** — Stop using `public/happyrobot-wordmark.svg` (contained unrelated shipping-company artwork). Badge rendered mark SVG + a styled `<span>HappyRobot</span>` in semibold white. Wrapped in an `<a href="https://happyrobot.ai">` for affiliation linking.
 - **`60d98ba`** — Fix Powered-by badge background. `bg-primary` resolves to white in dark mode (we flipped primary so CTAs stand out on dark surfaces), which made the badge a white-on-white blob. Switched to literal `bg-[#0E0D0C]` since the badge represents HappyRobot's brand chrome and should be dark regardless of theme.
 - **`35dd2c8`** — "Powered by HappyRobot" badge added to the top-right of the header. Italic "Powered by" + dark tile containing `happyrobot-mark.svg` (already white) and `happyrobot-wordmark.svg` rendered white via `filter: brightness(0) invert(1)`. Hidden below `sm` to avoid header crowding on mobile.
