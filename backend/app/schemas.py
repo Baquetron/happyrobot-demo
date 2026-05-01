@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 Outcome = Literal["booked", "rejected", "no_load", "failed_verification"]
@@ -65,6 +65,17 @@ class CallbackPayload(BaseModel):
     sentiment: Sentiment = "neutral"
     duration_seconds: float | None = None
     notes: str | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def empty_strings_to_none(cls, data: Any) -> Any:
+        """HappyRobot's webhook node sends every configured field even when
+        unset, serializing missing values as "". Coerce "" to None so an
+        empty load_id doesn't trigger a foreign-key violation and empty
+        numeric fields don't fail int/float parsing."""
+        if isinstance(data, dict):
+            return {k: (None if v == "" else v) for k, v in data.items()}
+        return data
 
 
 class CallOut(BaseModel):
